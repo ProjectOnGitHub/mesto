@@ -1,6 +1,12 @@
+
+* {
+  outline: 1px solid red;
+}
+
 .root {
   display: flex;
   flex-flow: column wrap;
+  box-sizing: border-box;
   align-items: center;
   background-color: #000;
   /* max-width: 882px; */

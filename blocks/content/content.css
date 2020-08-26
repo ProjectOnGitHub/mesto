@@ -1,0 +1,6 @@
+.content {
+  display: flex;
+  max-width: 882px;
+  width: 100%;
+  flex-flow: column wrap;
+}
