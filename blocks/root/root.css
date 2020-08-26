@@ -1,0 +1,12 @@
+.root {
+  margin: 0 auto;
+  background-color: #2a2c2f;
+  /* max-width: 1184px; */
+  font: normal 18px/30px 'Inter', Arial, sans-serif;
+  color: #fff;
+  -webkit-text-size-adjust: auto;
+  -ms-text-size-adjust: auto;
+  -moz-text-size-adjust: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
