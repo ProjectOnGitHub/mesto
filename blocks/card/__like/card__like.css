@@ -1,5 +1,6 @@
 .card__like {
   background: no-repeat center url(../../../images/heart.svg) #fff;
+  cursor: pointer;
   height: 18px;
   width: 21px;
   border: none;
