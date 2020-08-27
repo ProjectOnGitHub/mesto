@@ -1,12 +1,5 @@
 .footer {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: calc(1180px + 2*48px);
+
 }
 
-@media screen and (max-width: 767px) {
-	.footer {
-    flex-flow: column wrap;
-  }
-}
+
