@@ -1,0 +1,11 @@
+.root_section {
+  padding: 45px 19px 60px;
+}
+
+@media screen and (max-width: 724px) {
+	.root_section {
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
+}
+

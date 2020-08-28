@@ -5,3 +5,9 @@
   align-items: baseline;
   max-width: 100%;
 }
+
+@media screen and (max-width: 724px) {
+	.profile__info {
+    justify-content: center;
+    }
+}

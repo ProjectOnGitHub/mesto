@@ -5,3 +5,9 @@
   overflow: hidden;
   width: 100%;
 }
+
+@media screen and (max-width: 724px) {
+	.profile__subtitle {
+    text-align: center;
+  }
+}
