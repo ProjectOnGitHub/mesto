@@ -1,4 +1,4 @@
-.card__like {
+.cards__like {
   background: no-repeat center url(../../../images/heart.svg) #fff;
   cursor: pointer;
   height: 18px;
@@ -10,6 +10,6 @@
   transition: 0.5s ease-in-out;
 }
 
-.card__like:hover {
+.cards__like:hover {
   opacity: 0.6;
 }

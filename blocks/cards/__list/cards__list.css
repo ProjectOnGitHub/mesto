@@ -1,4 +1,4 @@
-.card {
+.cards__list {
   display: grid;
   padding: 0;
   grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
@@ -6,4 +6,10 @@
   gap: 21px 18px;
   margin: 0;
   justify-items: center;
+}
+
+@media screen and (max-width: 724px) {
+	.cards__list {
+    row-gap: 20px;
+    }
 }
