@@ -8,3 +8,11 @@
   overflow: hidden;
   max-width: 90%;
 }
+
+
+@media screen and (max-width: 724px) {
+	.profile__title {
+    font-size: 27px;
+    margin-bottom: 14px;
+  }
+}
