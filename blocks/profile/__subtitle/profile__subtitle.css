@@ -3,7 +3,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  width: 355px;
+  width: 340px;
 }
 
 @media screen and (max-width: 724px) {
