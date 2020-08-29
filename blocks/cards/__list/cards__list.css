@@ -7,9 +7,3 @@
   margin: 0;
   justify-items: center;
 }
-
-@media screen and (max-width: 724px) {
-	.cards__list {
-    row-gap: 20px;
-    }
-}
