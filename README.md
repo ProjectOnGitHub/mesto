@@ -12,5 +12,5 @@
 
 ---
 
-[Проект на GitHub Pages](https://projectongithub.github.io/mesto/)
+[Проект на GitHub Pages](https://projectongithub.github.io/mesto/index.html)
 
