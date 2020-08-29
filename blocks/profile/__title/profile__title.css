@@ -14,5 +14,8 @@
 	.profile__title {
     font-size: 27px;
     margin-bottom: 14px;
+    max-width: calc(100% - 41px);
   }
 }
+
+
