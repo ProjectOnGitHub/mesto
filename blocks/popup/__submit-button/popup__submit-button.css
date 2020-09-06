@@ -8,10 +8,23 @@
   line-height: 1.22;
   text-align: center;
   color: #fff;
-  transition: 0.5s ease-in-out;
+  transition: .5s ease-in-out;
   cursor: pointer;
 }
 
+@media screen and (max-width: 510px) {
+  .popup__submit-button {
+    font-size: 16px;
+    padding: 12px 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .popup__submit-button {
+    font-size: 14px;
+  }
+}
+
 .popup__submit-button:hover {
-  opacity: 0.8;
+  opacity: .8;
 }
