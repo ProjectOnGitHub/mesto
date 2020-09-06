@@ -13,3 +13,7 @@
 .cards__like:hover {
   opacity: .6;
 }
+
+.cards__like:focus {
+  outline-style: none;
+}
