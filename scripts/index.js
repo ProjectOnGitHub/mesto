@@ -1,15 +1,22 @@
 // popup
 // Объявляем переменные для попапов
 const popupProfile = document.querySelector('.popup_type-edit-profile');
-const popupPlace = document.querySelector('.popup_type-add-place');
-//const popup
 const popupProfileOpenButton = document.querySelector('.profile__edit-button');
-const popupPlaceOpenButton = document.querySelector('.profile__add-button')
 const popupProfileCloseButton = popupProfile.querySelector('.popup__close-button');
+const popupPlace = document.querySelector('.popup_type-add-place');
+const popupPlaceOpenButton = document.querySelector('.profile__add-button')
 const popupPlaceCloseButton = popupPlace.querySelector('.popup__close-button');
+const popupImage = document.querySelector('.popup_type-view-photo');
+const popupImageOpenButton = document.querySelector('.cards__image')
+const popupImageCloseButton = popupImage.querySelector('.popup__close-button');
 
 // Создаем функцию, которая будет открывать popup Редактировать профиль
 function popupProfileOpen() {
+  popupProfile.classList.toggle('popup_opened');
+}
+
+// Создаем функцию, которая будет закрывать popup Редактировать профиль
+function popupProfileClose() {
   popupProfile.classList.toggle('popup_opened');
 }
 
@@ -18,15 +25,22 @@ function popupPlaceOpen() {
   popupPlace.classList.toggle('popup_opened');
 }
 
-// Создаем функцию, которая будет закрывать popup Редактировать профиль
-function popupProfileClose() {
-  popupProfile.classList.toggle('popup_opened');
-}
-
 // Создаем функцию, которая будет закрывать popup Новое место
 function popupPlaceClose() {
   popupPlace.classList.toggle('popup_opened');
 }
+
+// Создаем функцию, которая будет открывать popup изображение
+function popupImageOpen() {
+  popupImage.classList.toggle('popup_opened');
+}
+
+// Создаем функцию, которая будет закрывать popup изображение
+function popupImageClose() {
+  popupImage.classList.toggle('popup_opened');
+}
+
+
 
 // Навешиваем обработчики событий на кнопки, которые будут открывать/закрывать popup Редактировать профиль
 popupProfileOpenButton.addEventListener('click', popupProfileOpen);
@@ -35,6 +49,10 @@ popupProfileCloseButton.addEventListener('click', popupProfileClose);
 // Навешиваем обработчики событий на кнопки, которые будут открывать/закрывать popup Новое место
 popupPlaceOpenButton.addEventListener('click', popupPlaceOpen);
 popupPlaceCloseButton.addEventListener('click', popupPlaceClose);
+
+// Навешиваем обработчики событий на кнопки, которые будут открывать/закрывать popup Изображение
+popupImageOpenButton.addEventListener('click', popupImageOpen);
+popupImageCloseButton.addEventListener('click', popupImageClose);
 
 // Форма Редактировать профиль
 // Объявляем переменные
