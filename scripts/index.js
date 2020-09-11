@@ -7,7 +7,7 @@ const popupPlace = document.querySelector('.popup_type-add-place');
 const popupPlaceOpenButton = document.querySelector('.profile__add-button')
 const popupPlaceCloseButton = popupPlace.querySelector('.popup__close-button');
 const popupImage = document.querySelector('.popup_type-view-image');
-const popupImageOpenButton = document.querySelector('.cards__image')
+const popupImageOpenButton = document.querySelector('.cards__image');
 const popupImageCloseButton = popupImage.querySelector('.popup__close-button');
 
 // Создаем функцию, которая будет открывать popup Редактировать профиль
