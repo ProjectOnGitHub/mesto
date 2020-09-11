@@ -1,17 +1,34 @@
 // popup
 // Объявляем переменные
-let popup = document.querySelector('.popup');
-let popupOpenButton = document.querySelector('.profile__edit-button');
-let popupCloseButton = document.querySelector('.popup__close-button');
+const popupProfile = document.querySelector('.popup_type-edit-profile');
+const popupPlace = document.querySelector('.popup_type-add-place');
+const popupOpenEditButton = document.querySelector('.profile__edit-button');
+const popupOpenAddButton = document.querySelector('.profile__add-button')
+const popupProfileClose = popupProfile.querySelector('.popup__close-button');
+const popupPlaceClose = popupPlace.querySelector('.popup__close-button');
 
-// Создаем функцию, которая будет открывать/закрывать popup
-function popupToggle() {
-  popup.classList.toggle('popup_opened');
+// Создаем функцию, которая будет открывать popup Редактировать профиль
+function popupProfileOpen() {
+  popupProfile.classList.toggle('popup_opened');
+}
+
+// Создаем функцию, которая будет открывать popup Новое место
+function popupPlaceOpen() {
+  popupPlace.classList.toggle('popup_opened');
+}
+
+function popupProfileClose() {
+  popupProfile.classList.toggle('popup_opened');
+}
+
+function popupPlaceClose() {
+  popupPlace.classList.toggle('popup_opened');
 }
 
 // Навешиваем обработчики событий на кнопки, которые будут открывать/закрывать popup
-popupOpenButton.addEventListener('click', popupToggle);
-popupCloseButton.addEventListener('click', popupToggle);
+popupOpenEditButton.addEventListener('click', popupProfileOpen);
+popupOpenAddButton.addEventListener('click', popupPlaceOpen);
+popupProfileClose.addEventListener('click', popupProfileClose);
 
 // Форма редактирования
 // Объявляем переменные
@@ -33,7 +50,7 @@ function formSubmitHandler (evt) {
     // Получите значение полей из свойства value для profile
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    popupToggle();
+    popupClose();
   }
 
 // Прикрепляем обработчик к форме:
