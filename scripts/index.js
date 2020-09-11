@@ -6,7 +6,7 @@ const popupProfileCloseButton = popupProfile.querySelector('.popup__close-button
 const popupPlace = document.querySelector('.popup_type-add-place');
 const popupPlaceOpenButton = document.querySelector('.profile__add-button')
 const popupPlaceCloseButton = popupPlace.querySelector('.popup__close-button');
-const popupImage = document.querySelector('.popup_type-view-photo');
+const popupImage = document.querySelector('.popup_type-view-image');
 const popupImageOpenButton = document.querySelector('.cards__image')
 const popupImageCloseButton = popupImage.querySelector('.popup__close-button');
 
@@ -40,8 +40,6 @@ function popupImageClose() {
   popupImage.classList.toggle('popup_opened');
 }
 
-
-
 // Навешиваем обработчики событий на кнопки, которые будут открывать/закрывать popup Редактировать профиль
 popupProfileOpenButton.addEventListener('click', popupProfileOpen);
 popupProfileCloseButton.addEventListener('click', popupProfileClose);
@@ -53,7 +51,7 @@ popupPlaceCloseButton.addEventListener('click', popupPlaceClose);
 // Навешиваем обработчики событий на кнопки, которые будут открывать/закрывать popup Изображение
 popupImageOpenButton.addEventListener('click', popupImageOpen);
 popupImageCloseButton.addEventListener('click', popupImageClose);
-
+console.log(popupImageOpen);
 // Форма Редактировать профиль
 // Объявляем переменные
 let formElement = popupProfile.querySelector('.popup__container');
