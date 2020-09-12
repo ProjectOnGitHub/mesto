@@ -22,14 +22,8 @@ const popupPlaceCloseButton = popupPlace.querySelector('.popup__close-button');
 const popupImageOpenButton = document.querySelectorAll('.cards__image');
 const popupImageCloseButton = popupImage.querySelector('.popup__close-button');
 
-let profileName = document.querySelector('.profile__title');
-let profileJob = document.querySelector('.profile__subtitle');
-
-
-
-
-
-
+const profileName = document.querySelector('.profile__title');
+const profileJob = document.querySelector('.profile__subtitle');
 
 // Создаем функцию, которая будет открывать popup Редактировать профиль
 function popupProfileOpen() {
