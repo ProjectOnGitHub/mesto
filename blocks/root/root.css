@@ -1,3 +1,7 @@
+* {
+  outline: 1px solid red;
+}
+
 .root {
   display: flex;
   flex-flow: column wrap;
