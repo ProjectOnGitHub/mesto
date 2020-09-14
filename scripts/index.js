@@ -86,6 +86,7 @@ const initialCards = [
 //Константы для создания карточки
 const cardTemplate = document.querySelector('.cards__template').content;
 const cards = document.querySelector('.cards__list');
+const cardsItem = document.querySelector('.cards__list-item');
 const placeInput = formPlace.querySelector('.popup__input_place');
 const urlInput = formPlace.querySelector('.popup__input_url');
 
@@ -111,7 +112,7 @@ formPlace.addEventListener('submit', (evt) => {
       name: nameValue,
       link: linkValue
 }
-initialCards.unshift(newCard);
+initialCards.unshift(cardsItem);
 popupPlaceClose();
 renderItem(newCard);
 
