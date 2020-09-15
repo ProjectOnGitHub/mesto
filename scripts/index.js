@@ -101,7 +101,7 @@ function renderItem({link, name}) {
   newCard.querySelector('.cards__image').src = link;
   newCard.querySelector('.cards__image').alt = name;
           // Добавление элемента в массив
-        cards.appendChild(newCard);
+        cards.prepend(newCard);
     }
 render();
 formPlace.addEventListener('submit', (evt) => {
@@ -112,9 +112,9 @@ formPlace.addEventListener('submit', (evt) => {
       name: nameValue,
       link: linkValue
 }
-initialCards.unshift(cardsItem);
 popupPlaceClose();
 renderItem(newCard);
+});
 
 // Лайк
 const cardLike = cards.querySelectorAll('.cards__like');
@@ -126,9 +126,6 @@ const cardDeleteButton = cards.querySelectorAll('.cards__delete-button');
 cardDeleteButton.forEach(item => item.addEventListener('click', function(){
   item.parentElement.remove();
 }))
-});
-
-
 
 
 
