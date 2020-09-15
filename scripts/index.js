@@ -1,3 +1,31 @@
+const initialCards = [
+  {
+    name: 'Андромеда',
+    link: 'https://images.unsplash.com/photo-1543722530-d2c3201371e7'
+  },
+  {
+    name: 'Луна',
+    link: 'https://images.unsplash.com/photo-1509647648544-a3e09b751ad6'
+  },
+  {
+    name: 'Сомбреро',
+    link: 'https://images.unsplash.com/photo-1560740583-0664e57560e4'
+  },
+  {
+    name: 'Земля',
+    link: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa'
+  },
+  {
+    name: 'Млечный путь',
+    link: 'https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99'
+  },
+  {
+    name: 'Солнце',
+    link: 'https://images.unsplash.com/photo-1575881875475-31023242e3f9'
+  }
+];
+
+
 // Попап Редактировать профиль //
 // Объявляем переменные для попапа Редактировать профиль
 const popupProfile = document.querySelector('.popup_type-edit-profile');
@@ -25,7 +53,7 @@ nameInput.value = profileName.textContent;
 jobInput.value = profileJob.textContent;
 
 // Создаем функцию, которая сохраняет значения попап Редактировать профиль
-function formSubmitProfileHandler (evt) {
+function formSubmitProfileHandler(evt) {
   evt.preventDefault();
   // Получаем значение полей из свойства value для profile
   profileName.textContent = nameInput.value;
@@ -44,6 +72,12 @@ const popupPlace = document.querySelector('.popup_type-add-place');
 const formPlace = popupPlace.querySelector('.popup__container');
 const popupPlaceOpenButton = document.querySelector('.profile__add-button')
 const popupPlaceCloseButton = popupPlace.querySelector('.popup__close-button');
+const cardTemplate = document.querySelector('.cards__template').content;
+const cards = document.querySelector('.cards__list');
+const cardsItem = document.querySelector('.cards__list-item');
+const placeInput = formPlace.querySelector('.popup__input_place');
+const urlInput = formPlace.querySelector('.popup__input_url');
+
 // Создаем функции, которые будут открывать/закрывать popup Новое место
 function popupPlaceOpen() {
   popupPlace.classList.toggle('popup_opened');
@@ -55,81 +89,36 @@ function popupPlaceClose() {
 popupPlaceOpenButton.addEventListener('click', popupPlaceOpen);
 popupPlaceCloseButton.addEventListener('click', popupPlaceClose);
 
-
-const initialCards = [
-  {
-      name: 'Андромеда',
-      link: 'https://images.unsplash.com/photo-1543722530-d2c3201371e7'
-  },
-  {
-      name: 'Луна',
-      link: 'https://images.unsplash.com/photo-1509647648544-a3e09b751ad6'
-  },
-  {
-      name: 'Сомбреро',
-      link: 'https://images.unsplash.com/photo-1560740583-0664e57560e4'
-  },
-  {
-      name: 'Земля',
-      link: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa'
-  },
-  {
-      name: 'Млечный путь',
-      link: 'https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99'
-  },
-  {
-      name: 'Солнце',
-      link: 'https://images.unsplash.com/photo-1575881875475-31023242e3f9'
-  }
-];
-
-//Константы для создания карточки
-const cardTemplate = document.querySelector('.cards__template').content;
-const cards = document.querySelector('.cards__list');
-const cardsItem = document.querySelector('.cards__list-item');
-const placeInput = formPlace.querySelector('.popup__input_place');
-const urlInput = formPlace.querySelector('.popup__input_url');
-
-
 function render() {
   initialCards.forEach(renderItem);
 }
 
-function renderItem({link, name}) {
+function renderItem({ link, name }) {
   const newCard = cardTemplate.cloneNode(true);
   newCard.querySelector('.cards__title').innerText = name;
   newCard.querySelector('.cards__image').src = link;
   newCard.querySelector('.cards__image').alt = name;
-          // Добавление элемента в массив
-        cards.prepend(newCard);
-    }
+  newCard.querySelector('.cards__like').addEventListener('click', event => {
+    event.target.classList.toggle('cards__like_active')
+  });
+  newCard.querySelector('.cards__delete-button').addEventListener('click', event => {
+    const cardDeleteButton = event.target.closest('.cards__list-item')
+    cardDeleteButton.remove()
+  });
+  cards.prepend(newCard);
+}
 render();
 formPlace.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const nameValue = placeInput.value;
   const linkValue = urlInput.value;
   const newCard = {
-      name: nameValue,
-      link: linkValue
-}
-popupPlaceClose();
-renderItem(newCard);
+    name: nameValue,
+    link: linkValue
+  }
+  popupPlaceClose();
+  renderItem(newCard);
 });
-
-// Лайк
-const cardLike = cards.querySelectorAll('.cards__like');
-cardLike.forEach(item => item.addEventListener('click', function(){
-  item.classList.toggle('cards__like_active');
-}))
-// Удаление карточки
-const cardDeleteButton = cards.querySelectorAll('.cards__delete-button');
-cardDeleteButton.forEach(item => item.addEventListener('click', function(){
-  item.parentElement.remove();
-}))
-
-
-
-
 
 
 // Попап Изображение //
@@ -142,8 +131,7 @@ const popupImage = popupPhoto.querySelector('.popup__image');
 const popupCaption = popupPhoto.querySelector('.popup__caption');
 
 // Создаем функцию для открытия попапа изображение
-popupPhotoOpenButton.forEach(item => item.addEventListener('click', function(){
-
+popupPhotoOpenButton.forEach(item => item.addEventListener('click', function () {
   popupPhoto.classList.toggle('popup_opened');
 }))
 
