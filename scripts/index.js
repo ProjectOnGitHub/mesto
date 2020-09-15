@@ -93,6 +93,7 @@ function render() {
   initialCards.forEach(renderItem);
 }
 
+
 function renderItem({ link, name }) {
   const newCard = cardTemplate.cloneNode(true);
   newCard.querySelector('.cards__title').innerText = name;
