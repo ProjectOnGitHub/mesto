@@ -98,9 +98,15 @@ function render() {
 
 function renderItem({ link, name }) {
   const newCard = cardTemplate.cloneNode(true);
+  const cardImage = newCard.querySelector('.cards__image');
   newCard.querySelector('.cards__title').innerText = name;
   newCard.querySelector('.cards__image').src = link;
   newCard.querySelector('.cards__image').alt = name;
+  cardImage.addEventListener('click', event => {
+    popupImage.src = cardImage.src;
+    popupImage.alt = cardImage.alt;
+    popupCaption.textContent = cardImage.alt;
+  });
   newCard.querySelector('.cards__like').addEventListener('click', event => {
     event.target.classList.toggle('cards__like_active')
   });
