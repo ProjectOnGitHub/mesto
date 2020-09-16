@@ -13,11 +13,9 @@ const profileJob = document.querySelector('.profile__subtitle');
 function popupProfileOpen() {
   popupProfile.classList.toggle('popup_opened');
 }
-
 function popupProfileClose() {
   popupProfile.classList.toggle('popup_opened');
 }
-
 // Навешиваем обработчики событий на кнопки, которые будут открывать/закрывать попап Редактировать профиль
 popupProfileOpenButton.addEventListener('click', popupProfileOpen);
 popupProfileCloseButton.addEventListener('click', popupProfileClose);
@@ -39,6 +37,7 @@ function formSubmitProfileHandler(evt) {
 // он будет следить за событием “submit” - «отправка»
 formProfile.addEventListener('submit', formSubmitProfileHandler);
 
+
 // Попап Новое место //
 // Объявляем переменные для попапа Новое место
 const popupPlace = document.querySelector('.popup_type-add-place');
@@ -47,6 +46,7 @@ const popupPlaceOpenButton = document.querySelector('.profile__add-button')
 const popupPlaceCloseButton = popupPlace.querySelector('.popup__close-button');
 const cardTemplate = document.querySelector('.cards__template').content;
 const cards = document.querySelector('.cards__list');
+const cardsItem = document.querySelector('.cards__list-item');
 const placeInput = formPlace.querySelector('.popup__input_place');
 const urlInput = formPlace.querySelector('.popup__input_url');
 
@@ -54,7 +54,6 @@ const urlInput = formPlace.querySelector('.popup__input_url');
 function popupPlaceOpen() {
   popupPlace.classList.toggle('popup_opened');
 }
-
 function popupPlaceClose() {
   popupPlace.classList.toggle('popup_opened');
   formPlace.reset();
@@ -64,29 +63,7 @@ function popupPlaceClose() {
 popupPlaceOpenButton.addEventListener('click', popupPlaceOpen);
 popupPlaceCloseButton.addEventListener('click', popupPlaceClose);
 
-// Попап Изображение //
-// Объявляем переменные для попапа Изображение
-const popupPhoto = document.querySelector('.popup_type-view-image');
-const popupPhotoOpenButton = document.querySelectorAll('.cards__image');
-const popupPhotoCloseButton = popupPhoto.querySelector('.popup__close-button');
-const popupImage = popupPhoto.querySelector('.popup__image');
-const popupCaption = popupPhoto.querySelector('.popup__caption');
-
-// Создаем функцию для открытия попапа изображение
-popupPhotoOpenButton.forEach(item => item.addEventListener('click', function () {
-  popupPhoto.classList.toggle('popup_opened');
-}))
-
-// Создаем функцию, которая будет закрывать попап Изображение
-function popupPhotoClose() {
-  popupPhoto.classList.toggle('popup_opened');
-}
-
-// Навешиваем обработчики событий на кнопки, которые будут закрывать попап Изображение
-popupPhotoCloseButton.addEventListener('click', popupPhotoClose);
-
-// Создание и отображение карточек
-//Исходный массив с изображениями
+//Массив
 const initialCards = [
   {
     name: 'Андромеда',
@@ -114,19 +91,20 @@ const initialCards = [
   }
 ];
 
-//Перебор массива
+
+//Перебираем массив
 function render() {
   initialCards.forEach(renderItem);
 }
 
-//Создание карточки
+//Собираем карточку
 function renderItem({ link, name }) {
   const newCard = cardTemplate.cloneNode(true);
   const cardImage = newCard.querySelector('.cards__image');
   newCard.querySelector('.cards__title').innerText = name;
   newCard.querySelector('.cards__image').src = link;
   newCard.querySelector('.cards__image').alt = name;
-  //Передача значений в попап Изображение
+  //Передаем значения в попап Изображение
   cardImage.addEventListener('click', event => {
     popupImage.src = cardImage.src;
     popupImage.alt = cardImage.alt;
@@ -145,8 +123,7 @@ function renderItem({ link, name }) {
   cards.prepend(newCard);
 }
 render();
-
-//Передача значений для создания новой карточки
+//Передаем значения для новой карточки из формы Новое место
 formPlace.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const nameValue = placeInput.value;
@@ -158,3 +135,25 @@ formPlace.addEventListener('submit', (evt) => {
   popupPlaceClose();
   renderItem(newCard);
 });
+
+// Попап Изображение //
+// Объявляем переменные для попапа Изображение
+const popupPhoto = document.querySelector('.popup_type-view-image');
+const popupPhotoOpenButton = document.querySelectorAll('.cards__image');
+const popupPhotoTitle = document.querySelectorAll('.cards__title');
+const popupPhotoCloseButton = popupPhoto.querySelector('.popup__close-button');
+const popupImage = popupPhoto.querySelector('.popup__image');
+const popupCaption = popupPhoto.querySelector('.popup__caption');
+
+// Создаем функцию для открытия попапа изображение
+popupPhotoOpenButton.forEach(item => item.addEventListener('click', function () {
+  popupPhoto.classList.toggle('popup_opened');
+}))
+
+// Создаем функцию, которая будет закрывать попап Изображение
+function popupPhotoClose() {
+  popupPhoto.classList.toggle('popup_opened');
+}
+
+// Навешиваем обработчики событий на кнопки, которые будут закрывать попап Изображение
+popupPhotoCloseButton.addEventListener('click', popupPhotoClose);
