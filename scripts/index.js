@@ -84,7 +84,9 @@ function popupPlaceOpen() {
 }
 function popupPlaceClose() {
   popupPlace.classList.toggle('popup_opened');
+  formPlace.reset();
 }
+
 // Навешиваем обработчики событий на кнопки, которые будут открывать/закрывать popup Новое место
 popupPlaceOpenButton.addEventListener('click', popupPlaceOpen);
 popupPlaceCloseButton.addEventListener('click', popupPlaceClose);
