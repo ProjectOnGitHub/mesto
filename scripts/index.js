@@ -74,7 +74,6 @@ const popupPlaceOpenButton = document.querySelector('.profile__add-button')
 const popupPlaceCloseButton = popupPlace.querySelector('.popup__close-button');
 const cardTemplate = document.querySelector('.cards__template').content;
 const cards = document.querySelector('.cards__list');
-const cardsItem = document.querySelector('.cards__list-item');
 const placeInput = formPlace.querySelector('.popup__input_place');
 const urlInput = formPlace.querySelector('.popup__input_url');
 
@@ -134,7 +133,6 @@ formPlace.addEventListener('submit', (evt) => {
 // Объявляем переменные для попапа Изображение
 const popupPhoto = document.querySelector('.popup_type-view-image');
 const popupPhotoOpenButton = document.querySelectorAll('.cards__image');
-const popupPhotoTitle = document.querySelectorAll('.cards__title');
 const popupPhotoCloseButton = popupPhoto.querySelector('.popup__close-button');
 const popupImage = popupPhoto.querySelector('.popup__image');
 const popupCaption = popupPhoto.querySelector('.popup__caption');
@@ -151,4 +149,3 @@ function popupPhotoClose() {
 
 // Навешиваем обработчики событий на кнопки, которые будут закрывать попап Изображение
 popupPhotoCloseButton.addEventListener('click', popupPhotoClose);
-
