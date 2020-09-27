@@ -10,15 +10,15 @@ const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__subtitle');
 
 // Создаем функции, которые будут открывать/закрывать попап Редактировать профиль
-function popupProfileOpen() {
+function openPopupProfile() {
   popupProfile.classList.toggle('popup_opened');
 }
-function popupProfileClose() {
+function closePopupProfile() {
   popupProfile.classList.toggle('popup_opened');
 }
 // Навешиваем обработчики событий на кнопки, которые будут открывать/закрывать попап Редактировать профиль
-popupProfileOpenButton.addEventListener('click', popupProfileOpen);
-popupProfileCloseButton.addEventListener('click', popupProfileClose);
+popupProfileOpenButton.addEventListener('click', openPopupProfile);
+popupProfileCloseButton.addEventListener('click', closePopupProfile);
 
 // Получаем значения для полей формы из profile
 nameInput.value = profileName.textContent;
@@ -30,7 +30,7 @@ function formSubmitProfileHandler(evt) {
   // Получаем значение полей из свойства value для profile
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  popupProfileClose();
+  closePopupProfile();
 }
 
 // Прикрепляем обработчик к форме:
@@ -51,17 +51,17 @@ const placeInput = formPlace.querySelector('.popup__input_place');
 const urlInput = formPlace.querySelector('.popup__input_url');
 
 // Создаем функции, которые будут открывать/закрывать popup Новое место
-function popupPlaceOpen() {
+function openPopupPlace() {
   popupPlace.classList.toggle('popup_opened');
 }
-function popupPlaceClose() {
+function closePopupPlace() {
   popupPlace.classList.toggle('popup_opened');
   formPlace.reset();
 }
 
 // Навешиваем обработчики событий на кнопки, которые будут открывать/закрывать popup Новое место
-popupPlaceOpenButton.addEventListener('click', popupPlaceOpen);
-popupPlaceCloseButton.addEventListener('click', popupPlaceClose);
+popupPlaceOpenButton.addEventListener('click', openPopupPlace);
+popupPlaceCloseButton.addEventListener('click', closePopupPlace);
 
 //Массив
 const initialCards = [
@@ -132,7 +132,7 @@ formPlace.addEventListener('submit', (evt) => {
     name: nameValue,
     link: linkValue
   }
-  popupPlaceClose();
+  closePopupPlace();
   renderItem(newCard);
 });
 
@@ -151,9 +151,9 @@ popupPhotoOpenButton.forEach(item => item.addEventListener('click', function () 
 }))
 
 // Создаем функцию, которая будет закрывать попап Изображение
-function popupPhotoClose() {
+function closePopupPhoto() {
   popupPhoto.classList.toggle('popup_opened');
 }
 
 // Навешиваем обработчики событий на кнопки, которые будут закрывать попап Изображение
-popupPhotoCloseButton.addEventListener('click', popupPhotoClose);
+popupPhotoCloseButton.addEventListener('click', closePopupPhoto);
