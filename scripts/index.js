@@ -12,11 +12,12 @@ const profileJob = document.querySelector('.profile__subtitle');
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEscape);
+  document.addEventListener('click', closePopupOverlay);
 }
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEscape);
-
+  document.removeEventListener('click', closePopupOverlay);
 }
 // Закрываем попапы по Escape
 function closePopupEscape(evt) {
@@ -25,6 +26,13 @@ function closePopupEscape(evt) {
   closePopup(popupOpened);
   }
 }
+
+// Закрываем попапы по клику по темному фону
+function closePopupOverlay(event) {
+  if(event.target.classList.contains('popup')) {
+      closePopup(event.target);
+  }
+};
 
 // Получаем значения для полей формы из profile
 nameInput.value = profileName.textContent;
