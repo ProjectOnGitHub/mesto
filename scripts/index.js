@@ -12,9 +12,20 @@ const profileJob = document.querySelector('.profile__subtitle');
 // Создаем функции, которые будут открывать/закрывать popup
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEscape);
+
 }
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEscape);
+
+}
+// Закрываем попапы по Escape
+function closePopupEscape(evt) {
+  const popupOpened = document.querySelector('.popup_opened');
+  if (evt.key === "Escape" && popupOpened) {
+  closePopup(popupOpened);
+  }
 }
 
 // Получаем значения для полей формы из profile
@@ -134,13 +145,7 @@ const popupPhotoCloseButton = popupPhoto.querySelector('.popup__close-button');
 const popupImage = popupPhoto.querySelector('.popup__image');
 const popupCaption = popupPhoto.querySelector('.popup__caption');
 
-
-
-
-// Навешиваем обработчики событий на кнопки, которые будут закрывать попап Изображение
 // Навешиваем обработчики событий на кнопки, которые будут открывать/закрывать popup
-
-
 popupProfileOpenButton.addEventListener('click', () => openPopup(popupProfile));
 popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfile));
 popupPlaceOpenButton .addEventListener('click', () => openPopup(popupPlace));
