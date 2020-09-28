@@ -1,4 +1,3 @@
-// Попап Редактировать профиль //
 // Объявляем переменные для попапа Редактировать профиль
 const popupProfile = document.querySelector('.popup_type-edit-profile');
 const formProfile = popupProfile.querySelector('.popup__container');
@@ -13,7 +12,6 @@ const profileJob = document.querySelector('.profile__subtitle');
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEscape);
-
 }
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
@@ -45,23 +43,6 @@ function formSubmitProfileHandler(evt) {
 // он будет следить за событием “submit” - «отправка»
 formProfile.addEventListener('submit', formSubmitProfileHandler);
 
-
-// Попап Новое место //
-// Объявляем переменные для попапа Новое место
-const popupPlace = document.querySelector('.popup_type-add-place');
-const formPlace = popupPlace.querySelector('.popup__container');
-const popupPlaceOpenButton = document.querySelector('.profile__add-button')
-const popupPlaceCloseButton = popupPlace.querySelector('.popup__close-button');
-const cardTemplate = document.querySelector('.cards__template').content;
-const cards = document.querySelector('.cards__list');
-const cardsItem = document.querySelector('.cards__list-item');
-const placeInput = formPlace.querySelector('.popup__input_place');
-const urlInput = formPlace.querySelector('.popup__input_url');
-
-
-
-
-
 //Массив
 const initialCards = [
   {
@@ -90,6 +71,17 @@ const initialCards = [
   }
 ];
 
+
+// Объявляем переменные для попапа Новое место
+const popupPlace = document.querySelector('.popup_type-add-place');
+const formPlace = popupPlace.querySelector('.popup__container');
+const popupPlaceOpenButton = document.querySelector('.profile__add-button')
+const popupPlaceCloseButton = popupPlace.querySelector('.popup__close-button');
+const cardTemplate = document.querySelector('.cards__template').content;
+const cards = document.querySelector('.cards__list');
+const cardsItem = document.querySelector('.cards__list-item');
+const placeInput = formPlace.querySelector('.popup__input_place');
+const urlInput = formPlace.querySelector('.popup__input_url');
 
 //Перебираем массив
 function render() {
@@ -135,6 +127,8 @@ formPlace.addEventListener('submit', (evt) => {
   formPlace.reset()
   renderItem(newCard);
 });
+
+
 
 // Попап Изображение //
 // Объявляем переменные для попапа Изображение
