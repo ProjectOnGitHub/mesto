@@ -31,23 +31,27 @@
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
   <section class="popup popup_type-edit-profile">
-    <form class="popup__container">
+    <form class="popup__container" novalidate>
       <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <fieldset class="popup__fieldset">
         <input type="text" placeholder="Имя" class="popup__input popup__input_name" required minlength="2" maxlength="40">
+        <span class="popup__input-error" id="input-name-error"></span>
         <input type="text" placeholder="Профессия" class="popup__input popup__input_job" required minlength="2" maxlength="200">
+        <span class="popup__input-error" id="input-job-error"></span>
         <button type="submit" class="popup__submit-button">Сохранить</button>
       </fieldset>
     </form>
   </section>
   <section class="popup popup_type-add-place">
-    <form class="popup__container">
+    <form class="popup__container" novalidate>
       <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
       <h2 class="popup__title">Новое место</h2>
       <fieldset class="popup__fieldset">
         <input type="text" placeholder="Название" class="popup__input popup__input_place" required minlength="2" maxlength="30">
+        <span class="popup__input-error" id="input-place-error"></span>
         <input type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_url" required>
+        <span class="popup__input-error" id="input-url-error"></span>
         <button type="submit" class="popup__submit-button">Создать</button>
       </fieldset>
     </form>
@@ -71,7 +75,8 @@
       </div>
     </li>
   </template>
-  <script src="./scripts/index.js"></script>
-  <script src="./scripts/validate.js"></script>
+  <script src="./scripts/validate.js" defer></script>
+  <script src="./scripts/initialCards.js" defer></script>
+  <script src="./scripts/index.js" defer></script>
 </body>
 </html>

@@ -35,50 +35,28 @@ function closePopupOverlay(event) {
 };
 
 // Получаем значения для полей формы из profile
-nameInput.value = profileName.textContent;
-jobInput.value = profileJob.textContent;
+function takeProfileValue() {
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+}
+
+function saveFormProfileValue() {
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
+}
+
 
 // Создаем функцию, которая сохраняет значения попап Редактировать профиль
 function formSubmitProfileHandler(evt) {
   evt.preventDefault();
   // Получаем значение полей из свойства value для profile
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
+  saveFormProfileValue();
   closePopup(popupProfile);
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formProfile.addEventListener('submit', formSubmitProfileHandler);
-
-//Массив
-const initialCards = [
-  {
-    name: 'Андромеда',
-    link: 'https://images.unsplash.com/photo-1543722530-d2c3201371e7'
-  },
-  {
-    name: 'Луна',
-    link: 'https://images.unsplash.com/photo-1509647648544-a3e09b751ad6'
-  },
-  {
-    name: 'Сомбреро',
-    link: 'https://images.unsplash.com/photo-1560740583-0664e57560e4'
-  },
-  {
-    name: 'Земля',
-    link: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa'
-  },
-  {
-    name: 'Млечный путь',
-    link: 'https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99'
-  },
-  {
-    name: 'Солнце',
-    link: 'https://images.unsplash.com/photo-1575881875475-31023242e3f9'
-  }
-];
-
 
 // Объявляем переменные для попапа Новое место
 const popupPlace = document.querySelector('.popup_type-add-place');
@@ -148,7 +126,10 @@ const popupImage = popupPhoto.querySelector('.popup__image');
 const popupCaption = popupPhoto.querySelector('.popup__caption');
 
 // Навешиваем обработчики событий на кнопки, которые будут открывать/закрывать popup
-popupProfileOpenButton.addEventListener('click', () => openPopup(popupProfile));
+popupProfileOpenButton.addEventListener('click', () => {
+  takeProfileValue();
+  openPopup(popupProfile)
+});
 popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfile));
 popupPlaceOpenButton .addEventListener('click', () => openPopup(popupPlace));
 popupPlaceCloseButton.addEventListener('click', () => closePopup(popupPlace));
