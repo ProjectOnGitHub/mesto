@@ -108,6 +108,7 @@ popupProfileOpenButton.addEventListener('click', () => {
   takeProfileValue();
   openPopup(popupProfile)
 });
+
 popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfile));
 popupPlaceOpenButton .addEventListener('click', () => openPopup(popupPlace));
 popupPlaceCloseButton.addEventListener('click', () => closePopup(popupPlace));
