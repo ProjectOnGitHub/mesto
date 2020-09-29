@@ -1,6 +1,8 @@
 # Сервис Место
 [Проектная работа 4](https://github.com/ProjectOnGitHub/mesto/tree/mesto-4)
+
 [Проектная работа 5](https://github.com/ProjectOnGitHub/mesto/tree/mesto-5)
+
 [Проектная работа 6](https://projectongithub.github.io/mesto/)
 (актуальная версия)
 
