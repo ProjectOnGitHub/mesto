@@ -123,6 +123,6 @@ popupProfileOpenButton.addEventListener('click', () => {
 });
 
 popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfile));
-popupPlaceOpenButton .addEventListener('click', () => openPopup(popupPlace));
+popupPlaceOpenButton.addEventListener('click', () => openPopup(popupPlace));
 popupPlaceCloseButton.addEventListener('click', () => closePopup(popupPlace));
 popupPhotoCloseButton.addEventListener('click', () => closePopup(popupPhoto));
