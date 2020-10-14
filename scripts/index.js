@@ -151,10 +151,10 @@ formPlace.addEventListener('submit', (evt) => {
     const linkValue = urlInput.value;
     const newCard = {
       name: nameValue,
-      link: linkValue
+      link: linkValue,
     }
     formPlace.reset()
-    const card = new Card ({newCard, cardTemplate});
+    const card = new Card (newCard, cardTemplate);
     const element = card.generateCard();
     closePopup(popupPlace, evt);
     cards.prepend(element);
