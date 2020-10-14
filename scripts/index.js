@@ -140,13 +140,12 @@ class Card {
 }
 
 initialCards.forEach(({name, link}) => {
-  const card = new Card ({name, link});
+  const card = new Card ({name, link}, cardTemplate);
   const element = card.generateCard();
   cards.append(element);
 })
 
-
-  const addPlace = (evt) => {
+formPlace.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const nameValue = placeInput.value;
     const linkValue = urlInput.value;
@@ -157,9 +156,9 @@ initialCards.forEach(({name, link}) => {
     formPlace.reset()
     const card = new Card ({newCard, cardTemplate});
     const element = card.generateCard();
-    closePopup(popupPlace);
+    closePopup(popupPlace, evt);
     cards.prepend(element);
-  };
+  });
 
 
 
