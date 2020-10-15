@@ -72,7 +72,6 @@ function saveFormProfileValue() {
   profileJob.textContent = jobInput.value;
 }
 
-
 function formSubmitProfileHandler(evt) {
   evt.preventDefault();
   saveFormProfileValue();
@@ -113,4 +112,3 @@ formPlace.addEventListener('submit', (evt) => {
 });
 
 export { openPopup, popupPhoto };
-
