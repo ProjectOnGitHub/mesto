@@ -13,17 +13,14 @@ const profileJob = document.querySelector('.profile__subtitle');
 
 const popupPlace = document.querySelector('.popup_type-add-place');
 const formPlace = popupPlace.querySelector('.popup__container');
-const popupPlaceOpenButton = document.querySelector('.profile__add-button')
+const popupPlaceOpenButton = document.querySelector('.profile__add-button');
 const popupPlaceCloseButton = popupPlace.querySelector('.popup__close-button');
 const cardTemplate = document.querySelector('.cards__template').content;
 const cards = document.querySelector('.cards__list');
-const cardsItem = document.querySelector('.cards__list-item');
 const placeInput = formPlace.querySelector('.popup__input_place');
 const urlInput = formPlace.querySelector('.popup__input_url');
 
 const popupPhoto = document.querySelector('.popup_type-view-image');
-const popupPhotoOpenButton = document.querySelectorAll('.cards__image');
-const popupPhotoTitle = document.querySelectorAll('.cards__title');
 const popupPhotoCloseButton = popupPhoto.querySelector('.popup__close-button');
 
 const inputObj = {
@@ -86,7 +83,7 @@ formProfile.addEventListener('submit', formSubmitProfileHandler);
 
 popupProfileOpenButton.addEventListener('click', () => {
   takeProfileValue();
-  openPopup(popupProfile)
+  openPopup(popupProfile);
 });
 
 popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfile));
