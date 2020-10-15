@@ -3,7 +3,9 @@
 
 [Проектная работа 5](https://github.com/ProjectOnGitHub/mesto/tree/mesto-5)
 
-[Проектная работа 6](https://projectongithub.github.io/mesto/)
+[Проектная работа 6](https://github.com/ProjectOnGitHub/mesto/tree/mesto-6)
+
+[Проектная работа 7](https://projectongithub.github.io/mesto/)
 (актуальная версия)
 
 ### Обзор
@@ -24,13 +26,14 @@ C помощью JavaScript сделано:
 * лайк карточки;
 * удаление карточки;
 * открытие попапа с изображением.
-
-Дополнительно сделано:
-
 * валидация формы «Редактировать профиль»;
 * валидация формы «Новое место»;
 * закрытие попапа кликом на оверлей;
 * закрытие попапа нажатием на Esc.
+
+В проектной работе 7 было сделано:
+* созданы классы Card и FormValidator;
+* JavaScript разбит на модули: index.js, Card.js, FormValidator.js и initialCards.js.
 
 ---
 
