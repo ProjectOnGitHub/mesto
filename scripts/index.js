@@ -35,6 +35,8 @@ const inputObj = {
 const formList = Array.from(document.querySelectorAll(inputObj.formSelector));
 const formPlaceValidation = new FormValidator(inputObj, formPlace);
 const formProfileValidation = new FormValidator(inputObj, formProfile);
+formPlaceValidation.enableValidation();
+formProfileValidation.enableValidation();
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
