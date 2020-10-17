@@ -1,19 +1,14 @@
 import { openPopup, popupPhoto } from './index.js';
 
 class Card {
-  constructor({name, link}) {
-    this._name = name;
-    this._link = link;
-
+  constructor(data, cardSelector) {
+    this._name = data.name;
+    this._link = data.link;
+    this._cardSelector = cardSelector;
   }
 
   _getTemplate() {
-    const cardElement = document
-      .querySelector('.cards__template')
-      .content
-      .querySelector('.cards__list-item')
-      .cloneNode(true);
-    return cardElement;
+    return document.querySelector(this._cardSelector).content.cloneNode(true).children[0];
   }
 
   generateCard() {

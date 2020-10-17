@@ -99,7 +99,7 @@ popupPlaceCloseButton.addEventListener('click', () => closePopup(popupPlace));
 popupPhotoCloseButton.addEventListener('click', () => closePopup(popupPhoto));
 
 initialCards.forEach(({ name, link }) => {
-  const card = new Card({ name, link }, cardTemplate);
+  const card = new Card({ name, link }, '.cards__template');
   const element = card.generateCard();
   cards.append(element);
 })
@@ -114,7 +114,7 @@ formPlace.addEventListener('submit', (evt) => {
   }
   formPlace.reset();
 
-  const card = new Card(newCard, cardTemplate);
+  const card = new Card(newCard, '.cards__template');
   const element = card.generateCard();
   closePopup(popupPlace, evt);
   cards.prepend(element);
