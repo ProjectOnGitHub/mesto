@@ -86,7 +86,12 @@ popupProfileOpenButton.addEventListener('click', () => {
 });
 
 popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfile));
-popupPlaceOpenButton.addEventListener('click', () => openPopup(popupPlace));
+popupPlaceOpenButton.addEventListener('click', () => {
+  formPlace.classList.add('.popup__submit-button_disabled');
+  openPopup(popupPlace);
+})
+
+
 popupPlaceCloseButton.addEventListener('click', () => closePopup(popupPlace));
 popupPhotoCloseButton.addEventListener('click', () => closePopup(popupPhoto));
 
@@ -104,7 +109,8 @@ formPlace.addEventListener('submit', (evt) => {
     name: nameValue,
     link: linkValue,
   }
-  formPlace.reset()
+  formPlace.reset();
+
   const card = new Card(newCard, cardTemplate);
   const element = card.generateCard();
   closePopup(popupPlace, evt);
