@@ -15,6 +15,7 @@ const popupPlace = document.querySelector('.popup_type-add-place');
 const formPlace = popupPlace.querySelector('.popup__container');
 const popupPlaceOpenButton = document.querySelector('.profile__add-button');
 const popupPlaceCloseButton = popupPlace.querySelector('.popup__close-button');
+const formPlaceSubmitButton = formPlace.querySelector('.popup__submit-button');
 const cardTemplate = document.querySelector('.cards__template').content;
 const cards = document.querySelector('.cards__list');
 const placeInput = formPlace.querySelector('.popup__input_place');
@@ -87,7 +88,9 @@ popupProfileOpenButton.addEventListener('click', () => {
 
 popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfile));
 popupPlaceOpenButton.addEventListener('click', () => {
-  formPlace.classList.add('.popup__submit-button_disabled');
+  formPlaceSubmitButton.classList.add(inputObj.inactiveButtonClass);
+  formPlaceSubmitButton.setAttribute('disabled', true);
+
   openPopup(popupPlace);
 })
 
