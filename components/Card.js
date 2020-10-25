@@ -1,4 +1,4 @@
-import { openPopup, popupPhoto } from './index.js';
+import { openPopup, popupPhoto } from '../scripts/index.js';
 
 class Card {
   constructor(data, cardSelector) {
