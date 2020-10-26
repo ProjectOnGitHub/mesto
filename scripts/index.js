@@ -18,6 +18,7 @@ const popupPlaceOpenButton = document.querySelector('.profile__add-button');
 const popupPlaceCloseButton = popupPlace.querySelector('.popup__close-button');
 const formPlaceSubmitButton = formPlace.querySelector('.popup__submit-button');
 const cardTemplate = document.querySelector('.cards__template').content;
+const template = document.querySelector('.cards__template');
 const cards = document.querySelector('.cards__list');
 const placeInput = formPlace.querySelector('.popup__input_place');
 const urlInput = formPlace.querySelector('.popup__input_url');
@@ -99,26 +100,33 @@ popupPlaceOpenButton.addEventListener('click', () => {
 popupPlaceCloseButton.addEventListener('click', () => closePopup(popupPlace));
 popupPhotoCloseButton.addEventListener('click', () => closePopup(popupPhoto));
 
+const cardsList = new Section({items: initialCards,
+  renderer: (item) => {
+    const card = new Card(item, '.cards__template');
+    const element = card.generateCard();
+    cardsList.addItem(element);
+    }
+  }, cards
+);
+
+
+
+/*
 initialCards.forEach(({ name, link }) => {
   const card = new Card({ name, link }, '.cards__template');
   const element = card.generateCard();
   cards.append(element);
 })
-
+*/
 formPlace.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const nameValue = placeInput.value;
   const linkValue = urlInput.value;
-  const newCard = {
-    name: nameValue,
-    link: linkValue,
-  }
-  formPlace.reset();
 
   const card = new Card(newCard, '.cards__template');
   const element = card.generateCard();
   closePopup(popupPlace, evt);
   cards.prepend(element);
 });
-
+cardsList.renderItems();
 export { openPopup, popupPhoto };

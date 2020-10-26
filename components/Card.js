@@ -1,4 +1,6 @@
 import { openPopup, popupPhoto } from '../scripts/index.js';
+import Popup from '../components/Popup.js';
+//import PopupWithImage from '../components/PopupWithImage.js';
 
 class Card {
   constructor(data, cardSelector) {
