@@ -1,12 +1,9 @@
-import { openPopup, popupPhoto } from '../scripts/index.js';
-import Popup from '../components/Popup.js';
-//import PopupWithImage from '../components/PopupWithImage.js';
-
-class Card {
-  constructor(data, cardSelector) {
+export default class Card {
+  constructor(data, cardSelector, openPopupPhoto) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._openPopupPhoto = openPopupPhoto;
   }
 
   _getTemplate() {
@@ -33,7 +30,7 @@ class Card {
       this._likeToogle();
     });
     this._element.querySelector('.cards__image').addEventListener('click', () => {
-      this._openPopupPhoto();
+      this._openPopupWithImage();
     });
   }
 
@@ -45,15 +42,11 @@ class Card {
     this._element.querySelector('.cards__like').classList.toggle('cards__like_active');
   }
 
-  _openPopupPhoto() {
-    const cardImage = this._element.querySelector('.cards__image');
-    const popupImage = document.querySelector('.popup__image');
-    const popupCaption = document.querySelector('.popup__caption');
-    popupImage.src = cardImage.src;
-    popupImage.alt = cardImage.alt;
-    popupCaption.textContent = cardImage.alt;
-    openPopup(popupPhoto);
+  _openPopupWithImage() {
+    this._openPopupPhoto(
+      this._name,
+      this._link,
+    )
   }
-}
 
-export default Card;
+}
