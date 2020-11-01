@@ -2,8 +2,8 @@ export default class UserInfo {
   constructor({name, job}) {
       this._name = name;
       this._job = job;
-      this._profileName = document.querySelector('.popup__input_edit_name');
-      this._profileJob = document.querySelector('.popup__input_edit_job')
+      this._profileName = document.querySelector('.popup__input_name');
+      this._profileJob = document.querySelector('.popup__input_job')
   }
 
   getUserInfo () {

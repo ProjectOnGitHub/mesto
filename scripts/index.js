@@ -68,7 +68,7 @@ const addPlace = (evt) => {
       name: placeInput.value,
       link: urlInput.value,
   }
-  const card = new Card(newCard, '.cards__template', openPopupPhoto);
+  const card = new Card(newCard, '.cards__template');
   const element = card.generateCard();
   cardsList.addItem(element);
   popupPlaceForm.close(popupPlace, evt);
@@ -80,7 +80,7 @@ const addPlace = (evt) => {
 const popupPlaceForm = new PopupWithForm({
   popupSelector: popupPlace,
   handleFormSubmit: (item) => {
-    const card = new Card(item, '.cards__template', openPopupPhoto);
+    const card = new Card(item, '.cards__template');
     const element = card.generateCard();
     cardsList.addItem(element);
   }
