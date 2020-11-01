@@ -4,6 +4,7 @@ import UserInfo from '../components/UserInfo.js';
 import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import FormValidator from '../components/FormValidator.js';
 import initialCards from './initialCards.js';
 
 const popupProfile = document.querySelector('.popup_type-edit-profile');
@@ -102,7 +103,7 @@ popupProfileForm.setEventListeners();
 
 // Экземпляр класса PopupWithImage
 
-const viewPopupPhoto = new PopupWithImage(popupPhoto);
+const viewPopupPhoto = new PopupWithImage({popupSelector: popupPhoto});
 viewPopupPhoto.setEventListeners();
 
 
