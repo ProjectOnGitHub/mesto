@@ -128,14 +128,14 @@ formProfileValidation.enableValidation();
 popupProfileOpenButton.addEventListener('click', () => {
   user.getUserInfo();
   popupProfileForm.open(popupProfile);
-  formProfileValidation.hideInputError();
+  formProfileValidation.hideFormErrors();
 });
 
 popupPlaceOpenButton.addEventListener('click', () => {
   formPlaceSubmitButton.classList.add(inputObj.inactiveButtonClass);
   formPlaceSubmitButton.setAttribute('disabled', true);
   popupPlaceForm.open(popupPlace);
-  formPlaceValidation.hideInputError();
+  formPlaceValidation.hideFormErrors();
 })
 popupPlace.addEventListener('click', addPlace);
 
