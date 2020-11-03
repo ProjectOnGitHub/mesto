@@ -5,7 +5,9 @@
 
 [Проектная работа 6](https://github.com/ProjectOnGitHub/mesto/tree/mesto-6)
 
-[Проектная работа 7](https://projectongithub.github.io/mesto/)
+[Проектная работа 7](https://github.com/ProjectOnGitHub/mesto/tree/mesto-7)
+
+[Проектная работа 8](https://github.com/ProjectOnGitHub/mesto/)
 (актуальная версия)
 
 ### Обзор
@@ -34,6 +36,10 @@ C помощью JavaScript сделано:
 В проектной работе 7 было сделано:
 * созданы классы Card и FormValidator;
 * JavaScript разбит на модули: index.js, Card.js, FormValidator.js и initialCards.js.
+
+В проектной работе 8 было сделано:
+* созданы классы Section, Popup, PopupWithForm, PopupWithImage, UserInfo;
+* JavaScript разбит на модули в соответствие с созданными классами.
 
 ---
 
