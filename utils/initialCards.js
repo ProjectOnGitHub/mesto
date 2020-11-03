@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: 'Андромеда',
     link: 'https://images.unsplash.com/photo-1543722530-d2c3201371e7'
