@@ -4,7 +4,7 @@ import UserInfo from '../components/UserInfo.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import FormValidator from '../components/FormValidator.js';
-import initialCards from '../scripts/initialCards.js';
+import initialCards from '../utils/initialCards.js';
 
 const popupProfile = document.querySelector('.popup_type-edit-profile');
 const formProfile = popupProfile.querySelector('.popup__container');
