@@ -44,4 +44,3 @@ C помощью JavaScript сделано:
 ---
 
 [Проект на GitHub Pages](https://projectongithub.github.io/mesto/)
-
