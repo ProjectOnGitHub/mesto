@@ -15,6 +15,7 @@ export const placeInput = formPlace.querySelector('.popup__input_place');
 export const urlInput = formPlace.querySelector('.popup__input_url');
 
 export const popupPhoto = document.querySelector('.popup_type-view-image');
+
 export const inputObj = {
   formSelector: '.popup__container',
   inputSelector: '.popup__input',

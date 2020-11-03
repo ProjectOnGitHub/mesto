@@ -1,7 +1,5 @@
-
-
 export default class Card {
-  constructor({name, link}, cardSelector, handleCardClick) {
+  constructor({ name, link }, cardSelector, handleCardClick) {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
@@ -50,5 +48,4 @@ export default class Card {
       this._link,
     )
   }
-
 }
