@@ -61,26 +61,29 @@ const cardsList = new Section({items: initialCards,
 );
 cardsList.renderItems();
 
-//  добавление карточки
+// добавление карточки
 const addPlace = (evt) => {
   evt.preventDefault();
   const newCard = {
       name: placeInput.value,
       link: urlInput.value,
   }
-  const card = new Card(newCard, '.cards__template');
+  const card = new Card(newCard, '.cards__template', openPopupPhoto);
   const element = card.generateCard();
-  cardsList.addItem(element);
+  cards.prepend(element);
   popupPlaceForm.close(popupPlace, evt);
   }
+
+
+
 
 
 // Экземпляр класса PopupWithForm - форма добавления нового места
 
 const popupPlaceForm = new PopupWithForm({
   popupSelector: popupPlace,
-  handleFormSubmit: (item) => {
-    const card = new Card(item, '.cards__template');
+  handleFormSubmit: (formData) => {
+    const card = new Card(formData, '.cards__template');
     const element = card.generateCard();
     cardsList.addItem(element);
   }
@@ -137,7 +140,7 @@ popupPlaceOpenButton.addEventListener('click', () => {
   popupPlaceForm.open(popupPlace);
   formPlaceValidation.hideFormErrors();
 })
-popupPlace.addEventListener('click', addPlace);
+popupPlace.addEventListener('submit', addPlace);
 
 
 

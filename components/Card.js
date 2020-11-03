@@ -1,9 +1,9 @@
 export default class Card {
-  constructor(data, cardSelector, openPopupPhoto) {
-    this._name = data.name;
-    this._link = data.link;
+  constructor({name, link}, cardSelector, handleCardClick) {
+    this._name = name;
+    this._link = link;
     this._cardSelector = cardSelector;
-    this._openPopupPhoto = openPopupPhoto;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -43,7 +43,7 @@ export default class Card {
   }
 
   _openPopupWithImage() {
-    this._openPopupPhoto(
+    this._handleCardClick(
       this._name,
       this._link,
     )
