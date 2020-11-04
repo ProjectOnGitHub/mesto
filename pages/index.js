@@ -54,7 +54,7 @@ const popupPlaceForm = new PopupWithForm({
   handleFormSubmit: (formData) => {
     const card = new Card(formData, '.cards__template');
     const element = card.generateCard();
-    cardsList.addItem(element);
+    //cardsList.addItem(element);
   }
 })
 popupPlaceForm.setEventListeners();
