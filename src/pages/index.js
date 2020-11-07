@@ -24,44 +24,40 @@ import {
   openPopupPhoto
 } from '../utils/constants.js';
 
+const createCard = (item) => {
+  const card = new Card(item, '.cards__template', openPopupPhoto);
+  const element = card.generateCard();
+  return element;
+}
+
 // Экземпляр класса Section - отрисовка элементов на странице
 const cardsList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '.cards__template', openPopupPhoto);
-    const element = card.generateCard();
-    cardsList.addItem(element);
+    cardsList.addItem(createCard(item));
   }
-}, cards
+}, '.cards__list'
 );
 cardsList.renderItems();
 
-// добавление карточки
-const addPlace = (evt) => {
-  evt.preventDefault();
-  const newCard = {
-    name: placeInput.value,
-    link: urlInput.value,
-  }
-  const card = new Card(newCard, '.cards__template', openPopupPhoto);
-  const element = card.generateCard();
-  cards.prepend(element);
-  popupPlaceForm.close(popupPlace, evt);
-}
+
 
 // Экземпляр класса PopupWithForm - форма добавления нового места
 const popupPlaceForm = new PopupWithForm({
-  popupSelector: popupPlace,
-  handleFormSubmit: (formData) => {
-    const card = new Card(formData, '.cards__template');
-    const element = card.generateCard();
-    cardsList.addItem(element);
+  popupSelector: '.popup_type-add-place',
+  handleFormSubmit: (item) => {
+    cards.prepend(createCard(item));
   }
 })
+popupPlaceForm.setEventListeners();
+
+
+//Экземпляр класса UserInfo - отвечает за управление отображением информации о пользователе на странице.
+const user = new UserInfo(".profile__title", ".profile__subtitle");
 
 // Экземпляр класса PopupWithForm - форма редактирования профиля
 const popupProfileForm = new PopupWithForm({
-  popupSelector: popupProfile,
+  popupSelector: '.popup_type-edit-profile',
   handleFormSubmit: () => {
     user.setUserInfo();
   }
@@ -69,14 +65,9 @@ const popupProfileForm = new PopupWithForm({
 popupProfileForm.setEventListeners();
 
 // Экземпляр класса PopupWithImage
-export const viewPopupPhoto = new PopupWithImage({ popupSelector: popupPhoto });
+export const viewPopupPhoto = new PopupWithImage({ popupSelector: '.popup_type-view-image' });
 viewPopupPhoto.setEventListeners();
 
-//Экземпляр класса UserInfo - отвечает за управление отображением информации о пользователе на странице.
-const user = new UserInfo({
-  name: profileName,
-  job: profileJob
-})
 
 // Валидация
 const formList = Array.from(document.querySelectorAll(inputObj.formSelector));
@@ -87,8 +78,9 @@ formProfileValidation.enableValidation();
 
 // Обработчики
 popupProfileOpenButton.addEventListener('click', () => {
+
   user.getUserInfo();
-  popupProfileForm.open(popupProfile);
+  popupProfileForm.open();
   formProfileValidation.hideFormErrors();
 });
 
@@ -98,4 +90,5 @@ popupPlaceOpenButton.addEventListener('click', () => {
   popupPlaceForm.open(popupPlace);
   formPlaceValidation.hideFormErrors();
 })
-popupPlace.addEventListener('submit', addPlace);
+
+// popupPlace.addEventListener('submit', addPlace);

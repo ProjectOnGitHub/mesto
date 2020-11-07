@@ -1,8 +1,7 @@
 import Popup from '../components/Popup.js';
 
 export default class PopupWithImage extends Popup {
-  open() {
+  open(name, link) {
     super.open();
-    this._popupSelector.addEventListener('click', () => this.openPopupPhoto);
   }
 }
