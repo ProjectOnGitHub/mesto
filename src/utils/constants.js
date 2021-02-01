@@ -26,11 +26,11 @@ export const inputObj = {
 };
 
 export const openPopupPhoto = (name, link) => {
-  const popupPhoto = document.querySelector('.popup_type-view-image');
-  const popupPhotoCaption = document.querySelector('.popup__caption');
-  const popupPhotoImage = document.querySelector('.popup__image');
-  popupPhotoCaption.textContent = name;
-  popupPhotoImage.alt = name;
-  viewPopupPhoto.open(popupPhoto);
-  popupPhotoImage.src = link;
+//  const popupPhoto = document.querySelector('.popup_type-view-image');
+//  const popupPhotoCaption = document.querySelector('.popup__caption');
+//  const popupPhotoImage = document.querySelector('.popup__image');
+//  popupPhotoCaption.textContent = name;
+//  popupPhotoImage.alt = name;
+viewPopupPhoto.open(name, link);
+ // popupPhotoImage.src = link;
 }
