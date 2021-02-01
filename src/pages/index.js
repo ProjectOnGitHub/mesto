@@ -53,7 +53,12 @@ popupPlaceForm.setEventListeners();
 
 
 //Экземпляр класса UserInfo - отвечает за управление отображением информации о пользователе на странице.
-const user = new UserInfo(".profile__title", ".profile__subtitle");
+//const user = new UserInfo(".profile__title", ".profile__subtitle");
+
+const user = new UserInfo({
+  userNameSelector: '.profile__title',
+  userJobSelector: '.profile__subtitle',
+});
 
 // Экземпляр класса PopupWithForm - форма редактирования профиля
 const popupProfileForm = new PopupWithForm({
@@ -78,16 +83,15 @@ formProfileValidation.enableValidation();
 
 // Обработчики
 popupProfileOpenButton.addEventListener('click', () => {
-
+  formPlaceSubmitButton.classList.add(inputObj.inactiveButtonClass);
+  formPlaceSubmitButton.setAttribute('disabled', true);
   user.getUserInfo();
   popupProfileForm.open();
   formProfileValidation.hideFormErrors();
 });
 
 popupPlaceOpenButton.addEventListener('click', () => {
-  formPlaceSubmitButton.classList.add(inputObj.inactiveButtonClass);
-  formPlaceSubmitButton.setAttribute('disabled', true);
-  popupPlaceForm.open(popupPlace);
+  popupPlaceForm.open();
   formPlaceValidation.hideFormErrors();
 })
 
