@@ -57,14 +57,16 @@ popupPlaceForm.setEventListeners();
 
 const user = new UserInfo({
   userNameSelector: '.profile__title',
-  userJobSelector: '.profile__subtitle',
+  userJobSelector: '.profile__subtitle'
 });
+
+
 
 // Экземпляр класса PopupWithForm - форма редактирования профиля
 const popupProfileForm = new PopupWithForm({
   popupSelector: '.popup_type-edit-profile',
-  handleFormSubmit: () => {
-    user.setUserInfo();
+  handleFormSubmit: (info) => {
+    user.setUserInfo(info);
   }
 })
 popupProfileForm.setEventListeners();
