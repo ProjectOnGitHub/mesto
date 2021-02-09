@@ -2,7 +2,7 @@
   width: calc(100% - 2 * 36px);
   margin: 50px auto 36px;
   padding: 0;
-  border: none
+  border: none;
 }
 
 @media screen and (max-width: 510px) {
