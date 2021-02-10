@@ -52,12 +52,9 @@ const popupProfileForm = new PopupWithForm({
 })
 popupProfileForm.setEventListeners();
 
-
-
 export const viewPopupPhoto = new PopupWithImage({ popupSelector: '.popup_type-view-image' });
 viewPopupPhoto.setEventListeners();
 
-//const formList = Array.from(document.querySelectorAll(inputObj.formSelector));
 const formPlaceValidation = new FormValidator(inputObj, formPlace);
 const formProfileValidation = new FormValidator(inputObj, formProfile);
 formPlaceValidation.enableValidation();
