@@ -1,1 +1,2 @@
-xcbnm
+
+console.log('Hello, World!')
