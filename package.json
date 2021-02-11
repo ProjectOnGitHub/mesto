@@ -1,0 +1,23 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "[Проектная работа 4](https://github.com/ProjectOnGitHub/mesto/tree/mesto-4)",
+  "main": "index.js",
+  "scripts": {
+    "build": "rd /s /q dist && webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProjectOnGitHub/mesto.git.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ProjectOnGitHub/mesto.git/issues"
+  },
+  "homepage": "https://github.com/ProjectOnGitHub/mesto.git#readme",
+  "devDependencies": {
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0"
+  }
+}
