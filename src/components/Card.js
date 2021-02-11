@@ -16,9 +16,7 @@ export default class Card {
     placeImage.src = this._link;
     placeImage.alt = this._name;
     this._element.querySelector('.cards__title').textContent = this._name;
-
     this._setEventListeners();
-
     return this._element;
   }
 
