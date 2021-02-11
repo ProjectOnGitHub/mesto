@@ -35,7 +35,7 @@ cardsList.renderItems();
 const popupPlaceForm = new PopupWithForm({
   popupSelector: '.popup_type-add-place',
   handleFormSubmit: (item) => {
-    cards.prepend(createCard(item));
+    cardsList.prependItem(createCard(item));
   }
 })
 popupPlaceForm.setEventListeners();
