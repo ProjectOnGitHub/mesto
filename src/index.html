@@ -49,6 +49,20 @@
       <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
     </form>
   </section>
+  <section class="popup popup_type-edit-avatar">
+    <form class="popup__container" novalidate>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <fieldset class="popup__fieldset">
+        <label class="popup__label">
+          <input name="avatar" type="url" placeholder="Ссылка на новый аватар" class="popup__input popup__input_avatar" id="avatar-input"
+            required autocomplete="off">
+          <span class="popup__input-error" id="avatar-input-error"></span>
+        </label>
+        <button type="submit" class="popup__submit-button">Сохранить</button>
+      </fieldset>
+      <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
+    </form>
+  </section>
   <section class="popup popup_type-add-place">
     <form class="popup__container" novalidate>
       <h2 class="popup__title">Новое место</h2>
@@ -77,7 +91,7 @@
       </figure>
     </div>
   </section>
-  <section class="popup popup_delete-card">
+  <section class="popup popup_type-delete-card">
     <div class="popup__container">
       <h2 class="popup__title">Вы уверены?</h2>
       <div class="popup__fieldset">
