@@ -5,6 +5,7 @@ import UserInfo from '../components/UserInfo.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import FormValidator from '../components/FormValidator.js';
+import Api from '../components/api.js'
 import initialCards from '../utils/initialCards.js';
 import {
   formProfile,
