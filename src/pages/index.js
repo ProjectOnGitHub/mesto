@@ -21,6 +21,13 @@ import {
 } from '../utils/constants.js';
 /* новый код  */
 
+const cardList = new Section({
+  renderer: (item) => {
+    cardList.addItem(createCard(item));
+  }
+}, '.cards__list'
+);
+
 let userId;
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1',
@@ -30,15 +37,14 @@ const api = new Api({
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(
-    ([cards, userData]) => {
+    ([initialCards, userData]) => {
       userId = userData._id;
       user.setUserInfo({
         userName: userData.name,
         userJob: userData.about,
         userAvatar: userData.avatar
       });
-
-      cardList.renderItems(cards.reverse());
+      cardList.renderItems(initialCards);
     })
   .catch(err => console.log(`Ошибка загрузки данных: ${err}`))
 
@@ -50,7 +56,7 @@ const createCard = (item) => {
   const card = new Card(item, '.cards__template', openPopupPhoto);
   return card.generateCard();
 }
-
+/*
 const cardsList = new Section({
   items: initialCards,
   renderer: (item) => {
@@ -59,6 +65,7 @@ const cardsList = new Section({
 }, '.cards__list'
 );
 cardsList.renderItems();
+*/
 
 const popupPlaceForm = new PopupWithForm({
   popupSelector: '.popup_type-add-place',
