@@ -5,7 +5,8 @@ import UserInfo from '../components/UserInfo.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import FormValidator from '../components/FormValidator.js';
-import Api from '../components/api.js'
+//import PopupWithFormConfirm from '../components/PopupWithFormConfirm.js';
+import Api from '../components/Api.js';
 import initialCards from '../utils/initialCards.js';
 import {
   formProfile,
@@ -18,6 +19,12 @@ import {
   inputJob,
   openPopupPhoto
 } from '../utils/constants.js';
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1',
+  cohortId: 'cohort-21',
+  token: '5391666e-5e33-4f71-9923-de80d868b155',
+});
 
 const createCard = (item) => {
   const card = new Card(item, '.cards__template', openPopupPhoto);

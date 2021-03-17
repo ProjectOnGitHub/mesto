@@ -9,7 +9,6 @@ const popupPlace = document.querySelector('.popup_type-add-place');
 const formPlace = popupPlace.querySelector('.popup__container');
 const popupPlaceOpenButton = document.querySelector('.profile__add-button');
 const cards = document.querySelector('.cards__list');
-
 const inputObj = {
   formSelector: '.popup__container',
   inputSelector: '.popup__input',
@@ -22,6 +21,8 @@ const inputObj = {
 const openPopupPhoto = (name, link) => {
   viewPopupPhoto.open(name, link);
 }
+
+
 
 export {
   popupProfile,
