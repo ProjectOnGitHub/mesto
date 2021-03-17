@@ -19,12 +19,32 @@ import {
   inputJob,
   openPopupPhoto
 } from '../utils/constants.js';
+/* новый код  */
 
+let userId;
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1',
   cohortId: 'cohort-21',
   token: '5391666e-5e33-4f71-9923-de80d868b155',
 });
+
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+  .then(
+    ([cards, userData]) => {
+      userId = userData._id;
+      user.setUserInfo({
+        userName: userData.name,
+        userJob: userData.about,
+        userAvatar: userData.avatar
+      });
+
+      cardList.renderItems(cards.reverse());
+    })
+  .catch(err => console.log(`Ошибка загрузки данных: ${err}`))
+
+/* кодец нового кода */
+
+
 
 const createCard = (item) => {
   const card = new Card(item, '.cards__template', openPopupPhoto);
@@ -50,7 +70,8 @@ popupPlaceForm.setEventListeners();
 
 const user = new UserInfo({
   userNameSelector: '.profile__title',
-  userJobSelector: '.profile__subtitle'
+  userJobSelector: '.profile__subtitle',
+  userAvatarSelector: '.profile__image'
 });
 
 const popupProfileForm = new PopupWithForm({

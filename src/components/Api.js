@@ -100,3 +100,4 @@ export default class Api {
       .then(this.getResponse)
   }
 }
+
