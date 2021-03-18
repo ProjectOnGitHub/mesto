@@ -63,27 +63,12 @@ const popupPlaceForm = new PopupWithForm({
       .catch(err => console.log(`Ошибка добавление карточки: ${err}`))
       .finally(() => {
         popupPlaceForm.renderLoading(false);
-        popupPlaceForm.close();
+
       })
   }
 });
 popupPlaceForm.setEventListeners();
 
-// const newCardPopup = new PopupWithForm({
-//   popupSelector: popupConfig.cardFormModalWindow,
-//   handleFormSubmit: (data) => {
-//     newCardPopup.renderLoading(true);
-
-//     api.addCard(data)
-//       .then((cardData) => {
-//         cardList.addItem(createCard(cardData));
-//         newCardPopup.close();
-//       })
-//       .catch(err => console.log(`Ошибка добавление карточки: ${err}`))
-//       .finally(() => newCardPopup.renderLoading(false));
-//   }
-// });
-// newCardPopup.setEventListeners();
 
 /* кодец нового кода */
 
