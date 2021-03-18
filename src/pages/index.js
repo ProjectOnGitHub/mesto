@@ -19,11 +19,13 @@ import {
   inputJob,
   openPopupPhoto
 } from '../utils/constants.js';
+
 /* новый код  */
 
-const cardList = new Section({
+
+const cardsList = new Section({
   renderer: (item) => {
-    cardList.addItem(createCard(item));
+    cardsList.addItem(createCard(item));
   }
 }, '.cards__list'
 );
@@ -44,9 +46,44 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
         userJob: userData.about,
         userAvatar: userData.avatar
       });
-      cardList.renderItems(initialCards);
+      cardsList.renderItems(initialCards);
     })
-  .catch(err => console.log(`Ошибка загрузки данных: ${err}`))
+  .catch(err => console.log(`Ошибка: ${err}`))
+
+
+const popupPlaceForm = new PopupWithForm({
+  popupSelector: '.popup_type-add-place',
+  handleFormSubmit: (item) => {
+    cardsList.prependItem(createCard(item));
+    popupPlaceForm.renderLoading(true);
+    api.addCard(item)
+      .then((data) => {
+        cardsList.addItem(createCard(data));
+      })
+      .catch(err => console.log(`Ошибка добавление карточки: ${err}`))
+      .finally(() => {
+        popupPlaceForm.renderLoading(false);
+        popupPlaceForm.close();
+      })
+  }
+});
+popupPlaceForm.setEventListeners();
+
+// const newCardPopup = new PopupWithForm({
+//   popupSelector: popupConfig.cardFormModalWindow,
+//   handleFormSubmit: (data) => {
+//     newCardPopup.renderLoading(true);
+
+//     api.addCard(data)
+//       .then((cardData) => {
+//         cardList.addItem(createCard(cardData));
+//         newCardPopup.close();
+//       })
+//       .catch(err => console.log(`Ошибка добавление карточки: ${err}`))
+//       .finally(() => newCardPopup.renderLoading(false));
+//   }
+// });
+// newCardPopup.setEventListeners();
 
 /* кодец нового кода */
 
@@ -67,13 +104,7 @@ const cardsList = new Section({
 cardsList.renderItems();
 */
 
-const popupPlaceForm = new PopupWithForm({
-  popupSelector: '.popup_type-add-place',
-  handleFormSubmit: (item) => {
-    cardsList.prependItem(createCard(item));
-  }
-})
-popupPlaceForm.setEventListeners();
+
 
 const user = new UserInfo({
   userNameSelector: '.profile__title',

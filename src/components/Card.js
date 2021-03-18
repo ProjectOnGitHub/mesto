@@ -4,6 +4,7 @@ export default class Card {
     this._link = link;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
+    this._myId = '6a225fe7978ef538f45608af';
   }
 
   _getTemplate() {
