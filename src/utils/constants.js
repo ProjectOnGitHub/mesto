@@ -8,6 +8,7 @@ const inputJob = document.querySelector('.popup__input_job')
 const popupPlace = document.querySelector('.popup_type-add-place');
 const formPlace = popupPlace.querySelector('.popup__container');
 const popupPlaceOpenButton = document.querySelector('.profile__add-button');
+const popupAvatarOpenButton = document.querySelector('.profile__image-edit');
 const cards = document.querySelector('.cards__list');
 const inputObj = {
   formSelector: '.popup__container',
@@ -33,6 +34,7 @@ export {
   popupPlace,
   formPlace,
   popupPlaceOpenButton,
+  popupAvatarOpenButton,
   cards,
   inputObj,
   openPopupPhoto

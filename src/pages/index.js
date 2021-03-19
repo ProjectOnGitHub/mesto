@@ -13,6 +13,7 @@ import {
   popupProfileOpenButton,
   formPlace,
   popupPlaceOpenButton,
+  popupAvatarOpenButton,
   cards,
   inputObj,
   inputName,
@@ -90,6 +91,29 @@ const popupProfileForm = new PopupWithForm({
 });
 popupProfileForm.setEventListeners();
 
+const popupAvatarForm = new PopupWithForm({
+  popupSelector: '.popup_type-edit-avatar',
+  handleFormSubmit: (item) => {
+    popupAvatarForm.renderLoading(true);
+
+    api.setUserAvatar({
+      avatar: item.avatar
+    })
+      .then((info) => {
+        userInfo.setUserInfo({
+          userAvatar: info.avatar,
+        });
+        popupAvatarForm.close();
+      })
+      .catch(err => console.log(`При изменении аватара пользователя: ${err}`))
+      .finally(() => popupAvatarForm.renderLoading(false));
+  }
+});
+popupAvatarForm.setEventListeners();
+
+popupAvatarOpenButton.addEventListener('click', () => {
+  popupAvatarForm.open();
+});
 
 /* кодец нового кода */
 
@@ -125,6 +149,7 @@ viewPopupPhoto.setEventListeners();
 
 const formPlaceValidation = new FormValidator(inputObj, formPlace);
 const formProfileValidation = new FormValidator(inputObj, formProfile);
+
 formPlaceValidation.enableValidation();
 formProfileValidation.enableValidation();
 

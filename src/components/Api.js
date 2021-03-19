@@ -67,7 +67,7 @@ export default class Api {
       .then(this.getResponse)
   }
 
-  setAvatar(avatar) {
+  setUserAvatar(avatar) {
     return fetch(`${this._baseUrl}/${this._cohortId}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
