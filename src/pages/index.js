@@ -46,7 +46,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
         userJob: userData.about,
         userAvatar: userData.avatar
       });
-      cardsList.renderItems(initialCards);
+      cardsList.renderItems(initialCards.reverse());
     })
   .catch(err => console.log(`Ошибка: ${err}`))
 
@@ -68,6 +68,27 @@ const popupPlaceForm = new PopupWithForm({
   }
 });
 popupPlaceForm.setEventListeners();
+
+const popupProfileForm = new PopupWithForm({
+  popupSelector: '.popup_type-edit-profile',
+  handleFormSubmit: (item) => {
+    popupProfileForm.renderLoading(true);
+    api.setUserInfo({
+      name: item.userName,
+      about: item.userJob
+    })
+      .then((info) => {
+        user.setUserInfo({
+          userName: info.name,
+          userJob: info.about,
+        })
+        popupProfileForm.close();
+      })
+      .catch(err => console.log(`Ошибка при обновлении профиля пользователя: ${err}`))
+      .finally(() => popupProfileForm.renderLoading(false));
+  }
+});
+popupProfileForm.setEventListeners();
 
 
 /* кодец нового кода */
@@ -97,13 +118,7 @@ const user = new UserInfo({
   userAvatarSelector: '.profile__image'
 });
 
-const popupProfileForm = new PopupWithForm({
-  popupSelector: '.popup_type-edit-profile',
-  handleFormSubmit: (item) => {
-    user.setUserInfo(item);
-  }
-})
-popupProfileForm.setEventListeners();
+
 
 export const viewPopupPhoto = new PopupWithImage({ popupSelector: '.popup_type-view-image' });
 viewPopupPhoto.setEventListeners();
