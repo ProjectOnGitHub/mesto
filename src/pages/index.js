@@ -9,15 +9,19 @@ import FormValidator from '../components/FormValidator.js';
 import Api from '../components/Api.js';
 import initialCards from '../utils/initialCards.js';
 import {
+  //popupProfile,
   formProfile,
   popupProfileOpenButton,
-  formPlace,
-  popupPlaceOpenButton,
-  popupAvatarOpenButton,
-  cards,
-  inputObj,
   inputName,
   inputJob,
+  //popupPlace,
+  formPlace,
+  //popupAvatar,
+  formAvatar,
+  popupPlaceOpenButton,
+  popupAvatarOpenButton,
+  //cards,
+  inputObj,
   openPopupPhoto
 } from '../utils/constants.js';
 
@@ -51,21 +55,18 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     })
   .catch(err => console.log(`Ошибка: ${err}`))
 
-
 const popupPlaceForm = new PopupWithForm({
   popupSelector: '.popup_type-add-place',
   handleFormSubmit: (item) => {
-    cardsList.prependItem(createCard(item));
+    //cardsList.prependItem(createCard(item));
     popupPlaceForm.renderLoading(true);
     api.addCard(item)
       .then((data) => {
         cardsList.addItem(createCard(data));
+        popupPlaceForm.close;
       })
       .catch(err => console.log(`Ошибка добавление карточки: ${err}`))
-      .finally(() => {
-        popupPlaceForm.renderLoading(false);
-
-      })
+      .finally(() => popupPlaceForm.renderLoading(false));
   }
 });
 popupPlaceForm.setEventListeners();
@@ -95,17 +96,16 @@ const popupAvatarForm = new PopupWithForm({
   popupSelector: '.popup_type-edit-avatar',
   handleFormSubmit: (item) => {
     popupAvatarForm.renderLoading(true);
-
     api.setUserAvatar({
-      avatar: item.avatar
+      avatar: item.userAvatar,
     })
       .then((info) => {
-        userInfo.setUserInfo({
+        user.setUserInfo({
           userAvatar: info.avatar,
         });
         popupAvatarForm.close();
       })
-      .catch(err => console.log(`При изменении аватара пользователя: ${err}`))
+      .catch(err => console.log(`Ошибка при изменении аватара пользователя: ${err}`))
       .finally(() => popupAvatarForm.renderLoading(false));
   }
 });
@@ -123,16 +123,7 @@ const createCard = (item) => {
   const card = new Card(item, '.cards__template', openPopupPhoto);
   return card.generateCard();
 }
-/*
-const cardsList = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    cardsList.addItem(createCard(item));
-  }
-}, '.cards__list'
-);
-cardsList.renderItems();
-*/
+
 
 
 
@@ -149,9 +140,10 @@ viewPopupPhoto.setEventListeners();
 
 const formPlaceValidation = new FormValidator(inputObj, formPlace);
 const formProfileValidation = new FormValidator(inputObj, formProfile);
-
+const formAvatarValidation = new FormValidator(inputObj, formAvatar);
 formPlaceValidation.enableValidation();
 formProfileValidation.enableValidation();
+formAvatarValidation.enableValidation();
 
 popupProfileOpenButton.addEventListener('click', () => {
   const profile = user.getUserInfo();

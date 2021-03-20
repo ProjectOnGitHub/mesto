@@ -67,13 +67,16 @@ export default class Api {
       .then(this.getResponse)
   }
 
-  setUserAvatar(avatar) {
+  setUserAvatar({ avatar }) {
     return fetch(`${this._baseUrl}/${this._cohortId}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
-        authorization: this._token
+        authorization: this._token,
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(avatar),
+      body: JSON.stringify({
+        avatar
+      }),
     })
       .then(this._getResponse)
   }

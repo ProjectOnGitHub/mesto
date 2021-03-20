@@ -7,6 +7,8 @@ const inputName = document.querySelector('.popup__input_name');
 const inputJob = document.querySelector('.popup__input_job')
 const popupPlace = document.querySelector('.popup_type-add-place');
 const formPlace = popupPlace.querySelector('.popup__container');
+const popupAvatar = document.querySelector('.popup_type-edit-avatar');
+const formAvatar = popupAvatar.querySelector('.popup__container');
 const popupPlaceOpenButton = document.querySelector('.profile__add-button');
 const popupAvatarOpenButton = document.querySelector('.profile__image-edit');
 const cards = document.querySelector('.cards__list');
@@ -33,6 +35,8 @@ export {
   inputJob,
   popupPlace,
   formPlace,
+  popupAvatar,
+  formAvatar,
   popupPlaceOpenButton,
   popupAvatarOpenButton,
   cards,
