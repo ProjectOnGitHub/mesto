@@ -11,12 +11,14 @@ export default class UserInfo {
       userName: this._userNameElement.textContent,
       userJob: this._userJobElement.textContent,
       userAvatar: this._userAvatarElement.src,
-
     };
   }
-  setUserInfo({ userName, userJob, userAvatar }) {
-    if (userName) this._userNameElement.textContent = userName;
-    if (userJob) this._userJobElement.textContent = userJob;
-    if (userAvatar) this._userAvatarElement.src = userAvatar;
+  setUserInfo({ userName, userJob }) {
+    this._userNameElement.textContent = userName;
+    this._userJobElement.textContent = userJob;
+  }
+
+  setUserAvatar({ userAvatar }) {
+    this._userAvatarElement.src = userAvatar;
   }
 }

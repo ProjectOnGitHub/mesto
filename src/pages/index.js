@@ -16,7 +16,7 @@ import {
   inputJob,
   //popupPlace,
   formPlace,
-  //popupAvatar,
+  popupAvatar,
   formAvatar,
   popupPlaceOpenButton,
   popupAvatarOpenButton,
@@ -25,6 +25,11 @@ import {
   openPopupPhoto
 } from '../utils/constants.js';
 
+const user = new UserInfo({
+  userNameSelector: '.profile__title',
+  userJobSelector: '.profile__subtitle',
+  userAvatarSelector: '.profile__image'
+});
 /* новый код  */
 
 
@@ -44,12 +49,14 @@ const api = new Api({
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(
-    ([initialCards, userData]) => {
-      userId = userData._id;
+    ([initialCards, info]) => {
+      userId = info._id;
       user.setUserInfo({
-        userName: userData.name,
-        userJob: userData.about,
-        userAvatar: userData.avatar
+        userName: info.name,
+        userJob: info.about,
+      });
+      user.setUserAvatar({
+        userAvatar: info.avatar,
       });
       cardsList.renderItems(initialCards.reverse());
     })
@@ -96,11 +103,11 @@ const popupAvatarForm = new PopupWithForm({
   popupSelector: '.popup_type-edit-avatar',
   handleFormSubmit: (item) => {
     popupAvatarForm.renderLoading(true);
-    api.setUserAvatar({
+    api.changeUserAvatar({
       avatar: item.userAvatar,
     })
       .then((info) => {
-        user.setUserInfo({
+        user.setUserAvatar({
           userAvatar: info.avatar,
         });
         popupAvatarForm.close();
@@ -127,11 +134,7 @@ const createCard = (item) => {
 
 
 
-const user = new UserInfo({
-  userNameSelector: '.profile__title',
-  userJobSelector: '.profile__subtitle',
-  userAvatarSelector: '.profile__image'
-});
+
 
 
 

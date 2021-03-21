@@ -5,7 +5,7 @@ export default class Api {
     this._cohortId = cohortId;
   }
 
-  getResponse(res) {
+  _getResponse(res) {
     return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
   }
 
@@ -15,7 +15,7 @@ export default class Api {
         authorization: this._token
       }
     })
-      .then(this.getResponse)
+      .then(this._getResponse)
   }
 
   addCard({ name, link }) {
@@ -30,7 +30,7 @@ export default class Api {
         link
       })
     })
-      .then(this.getResponse)
+      .then(this._getResponse)
   }
 
   deleteCard(cardId) {
@@ -40,7 +40,7 @@ export default class Api {
         authorization: this._token,
       }
     })
-      .then(this.getResponse)
+      .then(this._getResponse)
   }
 
   getUserInfo() {
@@ -49,7 +49,7 @@ export default class Api {
         authorization: this._token
       }
     })
-      .then(this.getResponse)
+      .then(this._getResponse)
   }
 
   setUserInfo({ name, about }) {
@@ -64,10 +64,10 @@ export default class Api {
         about
       })
     })
-      .then(this.getResponse)
+      .then(this._getResponse)
   }
 
-  setUserAvatar({ avatar }) {
+  changeUserAvatar({ avatar }) {
     return fetch(`${this._baseUrl}/${this._cohortId}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
@@ -76,7 +76,7 @@ export default class Api {
       },
       body: JSON.stringify({
         avatar
-      }),
+      })
     })
       .then(this._getResponse)
   }
@@ -100,7 +100,7 @@ export default class Api {
         'Content-Type': 'application/json'
       },
     })
-      .then(this.getResponse)
+      .then(this._getResponse)
   }
 }
 
