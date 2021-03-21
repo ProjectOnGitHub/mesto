@@ -16,7 +16,7 @@ import {
   inputJob,
   //popupPlace,
   formPlace,
-  popupAvatar,
+  //popupAvatar,
   formAvatar,
   popupPlaceOpenButton,
   popupAvatarOpenButton,
@@ -30,9 +30,28 @@ const user = new UserInfo({
   userJobSelector: '.profile__subtitle',
   userAvatarSelector: '.profile__image'
 });
-/* новый код  */
 
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1',
+  cohortId: 'cohort-21',
+  token: '5391666e-5e33-4f71-9923-de80d868b155',
+});
 
+let userId;
+
+const createCard = (item) => {
+  const card = new Card({
+    name: item.name,
+    link: item.link,
+    cardSelector: '.cards__template',
+    handleCardClick: openPopupPhoto,
+    userId: userId,
+    ownerId: item.owner._id
+  });
+  return card.generateCard();
+}
+
+// Рендеринг карточек
 const cardsList = new Section({
   renderer: (item) => {
     cardsList.addItem(createCard(item));
@@ -40,32 +59,10 @@ const cardsList = new Section({
 }, '.cards__list'
 );
 
-let userId;
-const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1',
-  cohortId: 'cohort-21',
-  token: '5391666e-5e33-4f71-9923-de80d868b155',
-});
-
-Promise.all([api.getInitialCards(), api.getUserInfo()])
-  .then(
-    ([initialCards, info]) => {
-      userId = info._id;
-      user.setUserInfo({
-        userName: info.name,
-        userJob: info.about,
-      });
-      user.setUserAvatar({
-        userAvatar: info.avatar,
-      });
-      cardsList.renderItems(initialCards.reverse());
-    })
-  .catch(err => console.log(`Ошибка: ${err}`))
-
+// Попап добавления нового места
 const popupPlaceForm = new PopupWithForm({
   popupSelector: '.popup_type-add-place',
   handleFormSubmit: (item) => {
-    //cardsList.prependItem(createCard(item));
     popupPlaceForm.renderLoading(true);
     api.addCard(item)
       .then((data) => {
@@ -78,6 +75,7 @@ const popupPlaceForm = new PopupWithForm({
 });
 popupPlaceForm.setEventListeners();
 
+// Попап обновления профиля
 const popupProfileForm = new PopupWithForm({
   popupSelector: '.popup_type-edit-profile',
   handleFormSubmit: (item) => {
@@ -99,6 +97,7 @@ const popupProfileForm = new PopupWithForm({
 });
 popupProfileForm.setEventListeners();
 
+// Попап обновления аватара
 const popupAvatarForm = new PopupWithForm({
   popupSelector: '.popup_type-edit-avatar',
   handleFormSubmit: (item) => {
@@ -118,35 +117,31 @@ const popupAvatarForm = new PopupWithForm({
 });
 popupAvatarForm.setEventListeners();
 
-popupAvatarOpenButton.addEventListener('click', () => {
-  popupAvatarForm.open();
-});
-
-/* кодец нового кода */
-
-
-
-const createCard = (item) => {
-  const card = new Card(item, '.cards__template', openPopupPhoto, userId);
-  return card.generateCard();
-}
-
-
-
-
-
-
-
-
+// Попап изображения
 export const viewPopupPhoto = new PopupWithImage({ popupSelector: '.popup_type-view-image' });
 viewPopupPhoto.setEventListeners();
 
-const formPlaceValidation = new FormValidator(inputObj, formPlace);
-const formProfileValidation = new FormValidator(inputObj, formProfile);
-const formAvatarValidation = new FormValidator(inputObj, formAvatar);
-formPlaceValidation.enableValidation();
-formProfileValidation.enableValidation();
-formAvatarValidation.enableValidation();
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+  .then(
+    ([initialCards, info]) => {
+      userId = info._id;
+      user.setUserInfo({
+        userName: info.name,
+        userJob: info.about,
+      });
+      user.setUserAvatar({
+        userAvatar: info.avatar,
+      });
+      cardsList.renderItems(initialCards.reverse());
+    })
+  .catch(err => console.log(`Ошибка: ${err}`))
+
+
+
+
+
+
+// Обработчики
 
 popupProfileOpenButton.addEventListener('click', () => {
   const profile = user.getUserInfo();
@@ -161,3 +156,16 @@ popupPlaceOpenButton.addEventListener('click', () => {
   popupPlaceForm.open();
   formPlaceValidation.hideFormErrors();
 })
+
+popupAvatarOpenButton.addEventListener('click', () => {
+  popupAvatarForm.open();
+});
+
+
+// Валидация форм
+const formPlaceValidation = new FormValidator(inputObj, formPlace);
+formPlaceValidation.enableValidation();
+const formProfileValidation = new FormValidator(inputObj, formProfile);
+formProfileValidation.enableValidation();
+const formAvatarValidation = new FormValidator(inputObj, formAvatar);
+formAvatarValidation.enableValidation();
