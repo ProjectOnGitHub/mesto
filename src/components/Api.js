@@ -52,7 +52,7 @@ export default class Api {
       .then(this._getResponse)
   }
 
-  setUserInfo({ name, about }) {
+  changeUserInfo({ name, about }) {
     return fetch(`${this._baseUrl}/${this._cohortId}/users/me`, {
       method: 'PATCH',
       headers: {

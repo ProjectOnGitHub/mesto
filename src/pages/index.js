@@ -82,7 +82,7 @@ const popupProfileForm = new PopupWithForm({
   popupSelector: '.popup_type-edit-profile',
   handleFormSubmit: (item) => {
     popupProfileForm.renderLoading(true);
-    api.setUserInfo({
+    api.changeUserInfo({
       name: item.userName,
       about: item.userJob
     })
