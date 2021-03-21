@@ -127,7 +127,7 @@ popupAvatarOpenButton.addEventListener('click', () => {
 
 
 const createCard = (item) => {
-  const card = new Card(item, '.cards__template', openPopupPhoto);
+  const card = new Card(item, '.cards__template', openPopupPhoto, userId);
   return card.generateCard();
 }
 
