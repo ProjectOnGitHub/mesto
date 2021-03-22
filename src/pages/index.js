@@ -5,7 +5,7 @@ import UserInfo from '../components/UserInfo.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import FormValidator from '../components/FormValidator.js';
-//import PopupWithFormConfirm from '../components/PopupWithFormConfirm.js';
+import PopupWithFormConfirm from '../components/PopupWithFormConfirm.js';
 import Api from '../components/Api.js';
 import initialCards from '../utils/initialCards.js';
 import {
@@ -43,11 +43,9 @@ const createCard = (item) => {
   const card = new Card({
     name: item.name,
     link: item.link,
-    cardSelector: '.cards__template',
-    handleCardClick: openPopupPhoto,
     userId: userId,
     ownerId: item.owner._id
-  });
+  }, '.cards__template', openPopupPhoto);
   return card.generateCard();
 }
 
@@ -117,6 +115,14 @@ const popupAvatarForm = new PopupWithForm({
 });
 popupAvatarForm.setEventListeners();
 
+
+// Попап подтверждения удаления формы
+const popupConfirmForm = new PopupWithFormConfirm({
+  popupSelector: '.popup_type-delete-card',
+  handleFormSubmit: () => { }
+});
+popupConfirmForm.setEventListeners();
+
 // Попап изображения
 export const viewPopupPhoto = new PopupWithImage({ popupSelector: '.popup_type-view-image' });
 viewPopupPhoto.setEventListeners();
@@ -159,6 +165,7 @@ popupPlaceOpenButton.addEventListener('click', () => {
 
 popupAvatarOpenButton.addEventListener('click', () => {
   popupAvatarForm.open();
+  formAvatarValidation.hideFormErrors();
 });
 
 

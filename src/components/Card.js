@@ -1,11 +1,14 @@
 export default class Card {
-  constructor({ name, link, cardSelector, handleCardClick, userId, ownerId }) {
+  constructor({ name, link, userId, ownerId/*, cardId*/ }, cardSelector, handleCardClick, /*handleLikeClick, handleDeleteIconClick*/) {
     this._name = name;
     this._link = link;
-    this._cardSelector = cardSelector;
-    this._handleCardClick = handleCardClick;
     this._userId = userId;
     this._ownerId = ownerId;
+    //this._cardId = cardId;
+    this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
+    //this._handleLikeClick = handleLikeClick;
+    //this._handleDeleteIconClick = handleDeleteIconClick;
   }
 
   _getTemplate() {
@@ -14,9 +17,15 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    const placeImage = this._element.querySelector('.cards__image');
-    placeImage.src = this._link;
-    placeImage.alt = this._name;
+    if (this._userId === this._ownerId) {
+      this._element.querySelector('.cards__delete-button')
+        .classList.add('cards__delete-button_visible');
+    } else {
+      this._element.querySelector('.cards__delete-button')
+        .classList.add('cards__delete-button_hidden');
+    };
+    this._element.querySelector('.cards__image').src = this._link;
+    this._element.querySelector('.cards__image').alt = this._name;
     this._element.querySelector('.cards__title').textContent = this._name;
     this._setEventListeners();
     return this._element;
