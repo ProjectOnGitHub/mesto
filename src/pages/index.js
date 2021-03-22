@@ -5,9 +5,8 @@ import UserInfo from '../components/UserInfo.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import FormValidator from '../components/FormValidator.js';
-import PopupWithFormConfirm from '../components/PopupWithFormConfirm.js';
+import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import Api from '../components/Api.js';
-import initialCards from '../utils/initialCards.js';
 import {
   //popupProfile,
   formProfile,
@@ -44,8 +43,22 @@ const createCard = (item) => {
     name: item.name,
     link: item.link,
     userId: userId,
-    ownerId: item.owner._id
-  }, '.cards__template', openPopupPhoto);
+    ownerId: item.owner._id,
+    cardId: item._id,
+    cardSelector: '.cards__template',
+    handleCardClick: openPopupPhoto,
+    handleDeleteIconClick: (card) => {
+      popupConfirmForm.open();
+      popupConfirmForm.setSubmitCallback(() => {
+        api.deleteCard(item._id)
+          .then(() => {
+            card.deleteCard();
+            popupConfirmForm.close();
+          })
+          .catch(err => console.log(`Ошибка при удалении карточки: ${err}`))
+      });
+    }
+  });
   return card.generateCard();
 }
 
@@ -117,9 +130,8 @@ popupAvatarForm.setEventListeners();
 
 
 // Попап подтверждения удаления формы
-const popupConfirmForm = new PopupWithFormConfirm({
-  popupSelector: '.popup_type-delete-card',
-  handleFormSubmit: () => { }
+const popupConfirmForm = new PopupWithConfirm({
+  popupSelector: '.popup_type-delete-card'
 });
 popupConfirmForm.setEventListeners();
 

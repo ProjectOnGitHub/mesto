@@ -34,7 +34,7 @@ export default class Api {
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._address}/${this._cohortId}/cards/${cardId}`, {
+    return fetch(`${this._baseUrl}/${this._cohortId}/cards/${cardId}`, {
       method: 'DELETE',
       headers: {
         authorization: this._token,
