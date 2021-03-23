@@ -82,7 +82,7 @@ const popupPlaceForm = new PopupWithForm({
     api.addCard(item)
       .then((data) => {
         cardsList.addItem(createCard(data));
-        popupPlaceForm.close;
+        popupPlaceForm.close();
       })
       .catch(err => console.log(`Ошибка добавление карточки: ${err}`))
       .finally(() => popupPlaceForm.renderLoading(false));
