@@ -49,12 +49,13 @@ const createCard = (item) => {
     cardSelector: '.cards__template',
     handleCardClick: openPopupPhoto,
     handleLikeClick: () => {
-      console.log('работает');
+      api.likeCard(card.id())
+        .then((res) => console.log(res))
     },
     handleDeleteIconClick: (card) => {
       popupConfirmForm.open();
       popupConfirmForm.setSubmitCallback(() => {
-        api.deleteCard(card.id())
+        api.deleteCard(card.id)
           .then(() => {
             card.deleteCard();
             popupConfirmForm.close();
