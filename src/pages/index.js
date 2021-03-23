@@ -8,18 +8,14 @@ import FormValidator from '../components/FormValidator.js';
 import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import Api from '../components/Api.js';
 import {
-  //popupProfile,
   formProfile,
   popupProfileOpenButton,
   inputName,
   inputJob,
-  //popupPlace,
   formPlace,
-  //popupAvatar,
   formAvatar,
   popupPlaceOpenButton,
   popupAvatarOpenButton,
-  //cards,
   inputObj,
   openPopupPhoto
 } from '../utils/constants.js';
@@ -72,7 +68,6 @@ const createCard = (item) => {
   return card.generateCard();
 }
 
-// Рендеринг карточек
 const cardsList = new Section({
   renderer: (item) => {
     cardsList.addItem(createCard(item));
@@ -80,7 +75,6 @@ const cardsList = new Section({
 }, '.cards__list'
 );
 
-// Попап добавления нового места
 const popupPlaceForm = new PopupWithForm({
   popupSelector: '.popup_type-add-place',
   handleFormSubmit: (item) => {
@@ -96,7 +90,6 @@ const popupPlaceForm = new PopupWithForm({
 });
 popupPlaceForm.setEventListeners();
 
-// Попап обновления профиля
 const popupProfileForm = new PopupWithForm({
   popupSelector: '.popup_type-edit-profile',
   handleFormSubmit: (item) => {
@@ -118,7 +111,6 @@ const popupProfileForm = new PopupWithForm({
 });
 popupProfileForm.setEventListeners();
 
-// Попап обновления аватара
 const popupAvatarForm = new PopupWithForm({
   popupSelector: '.popup_type-edit-avatar',
   handleFormSubmit: (item) => {
@@ -138,14 +130,11 @@ const popupAvatarForm = new PopupWithForm({
 });
 popupAvatarForm.setEventListeners();
 
-
-// Попап подтверждения удаления формы
 const popupConfirmForm = new PopupWithConfirm({
   popupSelector: '.popup_type-delete-card'
 });
 popupConfirmForm.setEventListeners();
 
-// Попап изображения
 export const viewPopupPhoto = new PopupWithImage({ popupSelector: '.popup_type-view-image' });
 viewPopupPhoto.setEventListeners();
 
@@ -163,13 +152,6 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
       cardsList.renderItems(initialCards.reverse());
     })
   .catch(err => console.log(`Ошибка: ${err}`))
-
-
-
-
-
-
-// Обработчики
 
 popupProfileOpenButton.addEventListener('click', () => {
   const profile = user.getUserInfo();
@@ -190,8 +172,6 @@ popupAvatarOpenButton.addEventListener('click', () => {
   formAvatarValidation.hideFormErrors();
 });
 
-
-// Валидация форм
 const formPlaceValidation = new FormValidator(inputObj, formPlace);
 formPlaceValidation.enableValidation();
 const formProfileValidation = new FormValidator(inputObj, formProfile);
