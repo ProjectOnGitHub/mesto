@@ -45,8 +45,12 @@ const createCard = (item) => {
     userId: userId,
     ownerId: item.owner._id,
     cardId: item._id,
+    likes: item.likes,
     cardSelector: '.cards__template',
     handleCardClick: openPopupPhoto,
+    handleLikeClick: () => {
+      console.log('работает');
+    },
     handleDeleteIconClick: (card) => {
       popupConfirmForm.open();
       popupConfirmForm.setSubmitCallback(() => {
