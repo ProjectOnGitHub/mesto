@@ -16,5 +16,4 @@ export default class PopupWithConfirm extends Popup {
       this._submitCallback();
     });
   }
-
 }

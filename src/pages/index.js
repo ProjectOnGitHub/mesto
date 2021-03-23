@@ -90,6 +90,7 @@ const popupPlaceForm = new PopupWithForm({
 });
 popupPlaceForm.setEventListeners();
 
+
 const popupProfileForm = new PopupWithForm({
   popupSelector: '.popup_type-edit-profile',
   handleFormSubmit: (item) => {
