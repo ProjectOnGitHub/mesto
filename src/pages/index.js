@@ -48,9 +48,15 @@ const createCard = (item) => {
     likes: item.likes,
     cardSelector: '.cards__template',
     handleCardClick: openPopupPhoto,
-    handleLikeClick: () => {
-      api.likeCard(card.id())
-        .then((res) => card.updateLikes(res))
+    handleLikeClick: (card) => {
+      if (card.ifLiked()) {
+        api.dislikeCard(card.id())
+          .then((res) => card.updateLikes(res))
+      } else {
+        api.likeCard(card.id())
+          .then((res) => card.updateLikes(res))
+      }
+
     },
     handleDeleteIconClick: (card) => {
       popupConfirmForm.open();
