@@ -54,7 +54,7 @@ const createCard = (item) => {
     handleDeleteIconClick: (card) => {
       popupConfirmForm.open();
       popupConfirmForm.setSubmitCallback(() => {
-        api.deleteCard(item._id)
+        api.deleteCard(card.id())
           .then(() => {
             card.deleteCard();
             popupConfirmForm.close();

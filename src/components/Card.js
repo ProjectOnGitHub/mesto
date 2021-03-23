@@ -68,6 +68,9 @@ export default class Card {
     } else {
       this._likeElement.classList.remove('cards__like_active');
     }
+  }
 
+  id() {
+    return this._cardId;
   }
 }
