@@ -56,12 +56,11 @@ const createCard = (item) => {
         api.likeCard(card.id())
           .then((res) => card.updateLikes(res))
       }
-
     },
     handleDeleteIconClick: (card) => {
       popupConfirmForm.open();
       popupConfirmForm.setSubmitCallback(() => {
-        api.deleteCard(card.id)
+        api.deleteCard(card.id())
           .then(() => {
             card.deleteCard();
             popupConfirmForm.close();
