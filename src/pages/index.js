@@ -50,7 +50,7 @@ const createCard = (item) => {
     handleCardClick: openPopupPhoto,
     handleLikeClick: () => {
       api.likeCard(card.id())
-        .then((res) => console.log(res))
+        .then((res) => card.updateLikes(res))
     },
     handleDeleteIconClick: (card) => {
       popupConfirmForm.open();

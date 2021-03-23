@@ -70,6 +70,11 @@ export default class Card {
     }
   }
 
+  updateLikes(updateLike) {
+    this._likes = updateLike.likes;
+    this.renderLikeCard();
+  }
+
   id() {
     return this._cardId;
   }
