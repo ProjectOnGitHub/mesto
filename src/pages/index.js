@@ -165,11 +165,14 @@ popupProfileOpenButton.addEventListener('click', () => {
 
 popupPlaceOpenButton.addEventListener('click', () => {
   popupPlaceForm.open();
+  formPlaceValidation.activityStatusButton();
   formPlaceValidation.hideFormErrors();
+
 })
 
 popupAvatarOpenButton.addEventListener('click', () => {
   popupAvatarForm.open();
+  formAvatarValidation.activityStatusButton();
   formAvatarValidation.hideFormErrors();
 });
 
