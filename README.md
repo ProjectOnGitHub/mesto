@@ -10,7 +10,7 @@
 
 [Проектная работа 8](https://github.com/ProjectOnGitHub/mesto/tree/mesto-8)
 
-[Проектная работа 8](https://github.com/ProjectOnGitHub/mesto/)
+[Проектная работа 9](https://github.com/ProjectOnGitHub/mesto/)
 (актуальная версия)
 
 ### Обзор
